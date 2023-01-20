@@ -28,24 +28,14 @@ systemctl enable NetworkManager.service
 4. Users
 
 ```bash
+passwd
 useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user>
 passwd <user>
 ```
 > editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
 ejecuten comandos.
 
-5. Aur helper
-
-```bash
-pacman -S git base-devel
-mkdir ~/Desktop/repos
-cd ~/Desktop/repos
-git clone https://aur.archlinux.org/paru-git.git
-cd paru
-makepkg -si
-```
-
-6. Paquetes gráficos
+5. Paquetes gráficos
 
 ```bash
 pacman -S xorg xorg-server
@@ -54,8 +44,20 @@ pacman -S xorg xorg-server
 # Instalación dotfiles
 
 ```bash
-cd ~/Desktop/repos
+cd
+mkdir -p Desktop/repos
+cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
+```
+
+# Aur helper
+
+```bash
+sudo pacman -S git base-devel
+cd Desktop/repos/
+git clone https://aur.archlinux.org/paru-git.git
+cd paru
+makepkg -si
 ```
 
 ## Entorno de escritorio
