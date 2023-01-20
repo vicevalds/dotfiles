@@ -14,8 +14,8 @@ pacman -Sy openssl
 
 ```bash
 pacman -S grub efibootmgr
-grub-install target=x86_64
-grubconfig
+grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 3. Conexión a internet
@@ -28,7 +28,7 @@ systemctl enable NetworkManager.service
 4. Users
 
 ```bash
-useradd -u <user> -G wheel,storage,power,audio,network
+useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user>
 passwd <user>
 ```
 > editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
@@ -92,7 +92,7 @@ cp -r Lavanda-Dark /usr/share/themes
 ```bash
 sudo pacman -S libnotify notification-daemon
 cd ~/Desktop/repos/dotfiles/move_to
-cp org.freedesktop.Notifications.service ????????????????????
+cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
 ## Mis software
@@ -113,7 +113,7 @@ cp ~/Desktop/repos/dotfiles/.config .
 ```bash
 cd
 mkdir Images
-cp ~/Desktop/repos/dotfiles/flowers_DALLE2.png Images/
+cp ~/Desktop/repos/dotfiles/flowers_DALL-E.png Images/
 ```
 
 ###### Tema rofi
@@ -129,19 +129,19 @@ rofi-theme-selector
 ```bash
 cd 
 cp ~/Desktop/repos/dotfiles/move_to/.z* . 
-ch <user> --shell /bin/zsh
-sudo ch root --shell /bin/zsh 
+usermod --shell /bin/zsh <user>
+sudo usermod --shell /bin/zsh root
 ```
 
 ###### Powerlevel10k
-Copio de mis dotfiles por comodidad. Powerlevel10k proviene de este repositorio.
+Powerlevel10k proviene de este repositorio.
 ```bash
 cd 
 cp ~/Desktop/repos/dotfiles/move_to/.p10k.zsh . 
 ```
 
 ###### Fzf
-Copio de mis dotfiles por comodidad. Fzf proviene de este repositorio.
+Fzf proviene de este repositorio.
 ```bash
 updatedb
 cd 
