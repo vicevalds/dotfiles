@@ -2,15 +2,14 @@
 
 ## Instalación Arch
 
-1. Error de la .iso
+###### Error de la .iso
 
 ```bash
 pacman -Syu
 pacman -Sy archlinux-keyring
 pacman -Sy openssl
 ```
-
-2. Cargador de arranque
+###### Cargador de arranque
 
 ```bash
 pacman -S grub efibootmgr
@@ -18,14 +17,14 @@ grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-3. Conexión a internet
+###### Conexión a internet
 
 ```bash
 pacman -S networkmanager wpa_supplicant
 systemctl enable NetworkManager.service
 ```
 
-4. Users
+###### Users
 
 ```bash
 passwd
@@ -35,7 +34,7 @@ passwd <user>
 > editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
 ejecuten comandos.
 
-5. Paquetes gráficos
+###### Sistema de visualización
 
 ```bash
 pacman -S xorg xorg-server
@@ -97,7 +96,7 @@ cd ~/Desktop/repos/dotfiles/move_to
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
-## Mis software
+## Software
 
 ```bash
 sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting 
@@ -111,7 +110,7 @@ cd
 cp ~/Desktop/repos/dotfiles/.config . 
 ```
 
-###### Wallpaper con feh
+###### Wallpaper
 ```bash
 cd
 mkdir Images
@@ -150,7 +149,7 @@ cd
 cp -r ~/Desktop/repos/dotfiles/move_to/.f* . 
 ```
 
-###### Personalizaciones para Root
+###### Personalizacion Root
 
 ```bash
 sudo su
