@@ -1,8 +1,8 @@
 # dotfiles
 
-## Mi configuración de Arch
+## Instalación Arch
 
-1. Instación de la .iso
+1. Error de la .iso
 
 ´´´bash
 pacman -Syu
@@ -25,7 +25,16 @@ pacman -S networkmanager wpa_supplicant
 systemctl enable NetworkManager.service
 ´´´
 
-4. Aur helper
+4. Users
+
+´´´bash
+useradd -u <user> -G wheel,storage,power,audio,network
+passwd <user>
+´´´
+> editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
+ejecuten comandos.
+
+5. Aur helper
 
 ´´´bash
 pacman -S git base-devel
@@ -36,7 +45,7 @@ cd paru
 makepkg -si
 ´´´
 
-5. Paquetes gráficos
+6. Paquetes gráficos
 
 ´´´bash
 pacman -S xorg xorg-server
