@@ -1,6 +1,6 @@
 # dotfiles
 
-## Instalación Arch
+# Instalación Arch
 
 ###### Error de la .iso
 
@@ -49,7 +49,7 @@ cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
 ```
 
-# Aur helper
+## Aur helper
 
 ```bash
 sudo pacman -S git base-devel
@@ -59,7 +59,7 @@ cd paru
 makepkg -si
 ```
 
-## Entorno de escritorio
+# Entorno de escritorio
 
 ```bash
 sudo pacman -S qtile lightdm lightdm-webkit2-greeter
@@ -157,7 +157,7 @@ cd
 cp ~/Desktop/repos/dotfiles/move_to/root_home/* . 
 ```
 
-> Utilidades
+## Utilidades
 ```bash
 sudo pacman -S discord
 paru -Si libreoffice-bin
