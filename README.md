@@ -4,6 +4,10 @@
 
 1. Error de la .iso
 
+```
+    **Esto es negrita**
+```
+
 ´´´bash
 pacman -Syu
 pacman -Sy archlinux-keyring
