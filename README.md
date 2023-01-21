@@ -100,7 +100,7 @@ cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 
 ```bash
 sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting 
-bat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl udiskie network-manager-applet 
+bat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie network-manager-applet 
 imagemagick thunar neofetch vlc scrot wget p7zip python-pip
 ```
 
