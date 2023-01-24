@@ -63,16 +63,16 @@ makepkg -si
 
 ```bash
 sudo pacman -S qtile lightdm lightdm-webkit2-greeter 
+paru -S lightdm-webkit2-theme-arch 
 systemctl enable lightdm.service
-cd ~/Desktop/repos/dotfiles
-cd move_to/
+cd ~/Desktop/repos/dotfiles/move/
 sudo cp main.js index.css /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
 sudo rm /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/*
 sudo cp 00.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
-cp move_to/*.conf /etc/lightdm/
+sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
 
-###### Activar widget para ver las actualizaciones
+###### Activar widget para ver actualizaciones disponibles
 
 ```bash
 sudo pacman -S pacman-contrib
@@ -86,7 +86,7 @@ sudo pacman -S firefox
 ## Theme, fonts and icons
 
 ```bash
-cd ~/Desktop/repos/dotfiles/move_to
+cd ~/Desktop/repos/dotfiles/move
 cp -r Hack-Nerd-Font /usr/share/fonts
 cp -r Tela-purple-dark /usr/share/icons
 cp -r Lavanda-Dark /usr/share/themes
@@ -95,7 +95,7 @@ cp -r Lavanda-Dark /usr/share/themes
 ## Notificaciones
 ```bash
 sudo pacman -S libnotify notification-daemon
-cd ~/Desktop/repos/dotfiles/move_to
+cd ~/Desktop/repos/dotfiles/move
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
@@ -117,13 +117,13 @@ cp -r ~/Desktop/repos/dotfiles/.config .
 ```bash
 cd
 mkdir Images
-cp ~/Desktop/repos/dotfiles/flowers_DALL-E.png Images/
+cp ~/Desktop/repos/dotfiles/move/flowers_DALL-E.png Images/
 ```
 
 ###### Tema rofi
 
 ```bash
-cd ~/Desktop/repos/dotfiles/move_to
+cd ~/Desktop/repos/dotfiles/move
 cp onedark.rasi /usr/share/rofi/themes
 rofi-theme-selector
 ```
@@ -132,7 +132,7 @@ rofi-theme-selector
 
 ```bash
 cd 
-cp ~/Desktop/repos/dotfiles/move_to/.z* . 
+cp ~/Desktop/repos/dotfiles/.z* . 
 usermod --shell /bin/zsh <user>
 sudo usermod --shell /bin/zsh root
 ```
@@ -141,7 +141,7 @@ sudo usermod --shell /bin/zsh root
 Powerlevel10k proviene de este repositorio.
 ```bash
 cd 
-cp ~/Desktop/repos/dotfiles/move_to/.p10k.zsh . 
+cp ~/Desktop/repos/dotfiles/.p10k.zsh . 
 ```
 
 ###### Fzf
@@ -149,7 +149,7 @@ Fzf proviene de este repositorio.
 ```bash
 updatedb
 cd 
-cp -r ~/Desktop/repos/dotfiles/move_to/.f* . 
+cp -r ~/Desktop/repos/dotfiles/.f* . 
 ```
 
 ###### Personalizacion Root
@@ -157,13 +157,14 @@ cp -r ~/Desktop/repos/dotfiles/move_to/.f* .
 ```bash
 sudo su
 cd
-cp ~/Desktop/repos/dotfiles/move_to/root_home/* . 
+cp ~/Desktop/repos/dotfiles/move/root_home/* . 
 ```
 
 ## Utilidades
 ```bash
 sudo pacman -S discord
-paru -Si libreoffice-bin
+paru -S libreoffice-bin
+paru -S librewolf-bin
 ```
 
 Completar!!!!!!!!!!!
