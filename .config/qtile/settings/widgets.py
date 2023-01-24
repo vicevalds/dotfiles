@@ -31,7 +31,7 @@ def powerline(fg="text", bg="dark"):
 def workspaces(): 
     return [
         widget.GroupBox(
-            **base(fg='light'),
+            **base(fg='text'),
             font='Hack Nerd Font',
             fontsize=19,
             margin_y=3,
@@ -39,7 +39,7 @@ def workspaces():
             padding_y=8,
             padding_x=5,
             borderwidth=1,
-            active=colors['active'],
+            active=colors['text'],
             inactive=colors['inactive'],
             rounded=False,
             highlight_method='block',
@@ -51,19 +51,19 @@ def workspaces():
             other_screen_border=colors['dark'],
             disable_drag=True
         ),
-        widget.WindowName(**base(fg='light'), fontsize=14, padding=5, max_chars=40),
+        widget.WindowName(**base(fg='text'), fontsize=14, padding=5, max_chars=40),
 ]
 
 
 primary_widgets = [
     *workspaces(),
 
-    powerline('color3', 'dark'),
+    powerline('color4', 'dark'),
 
-    icon(bg="color3", fg="text", text=' '), # Icon: nf-fa-download
+    icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
     
     widget.CheckUpdates(
-        background=colors['color3'],
+        background=colors['color4'],
         colour_have_updates=colors['text'],
         colour_no_updates=colors['text'],
         no_update_string='0 ',
@@ -72,23 +72,23 @@ primary_widgets = [
         custom_command='checkupdates',
     ),
 
+    powerline('color3', 'color4'),
+
+    widget.CurrentLayoutIcon(**base(bg='color3'), scale=0.65),
+
+    widget.CurrentLayout(**base(bg='color3', fg='text'), padding=5),
+
     powerline('color2', 'color3'),
 
-    widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+    icon(bg='color2', fg='text', fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
 
-    widget.CurrentLayout(**base(bg='color2', fg='text'), padding=5),
+    widget.Clock(**base(bg='color2'), format='%d/%m/%Y - %a - %H:%M '),
 
     powerline('color1', 'color2'),
 
-    icon(bg='color1', fg='text', fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
+    widget.Systray(background=colors['color1'], padding=5),
 
-    widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %a - %H:%M '),
-
-    powerline('color0', 'color1'),
-
-    widget.Systray(background=colors['color0'], padding=5),
-
-    widget.PulseVolume(limit_max_volume=True, background=colors['color0'], 
+    widget.PulseVolume(limit_max_volume=True, background=colors['color1'], 
 	padding=5, update_interval=0.01),
 ]
 
