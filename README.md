@@ -62,10 +62,13 @@ makepkg -si
 # Entorno de escritorio
 
 ```bash
-sudo pacman -S qtile lightdm lightdm-webkit2-greeter
+sudo pacman -S qtile lightdm lightdm-webkit2-greeter 
 systemctl enable lightdm.service
 cd ~/Desktop/repos/dotfiles
-cp -r move_to/lightdm-webkit2-theme-arch/ /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
+cd move_to/
+sudo cp main.js index.css /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
+sudo rm /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/*
+sudo cp 00.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
 cp move_to/*.conf /etc/lightdm/
 ```
 
@@ -100,14 +103,14 @@ cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 
 ```bash
 sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting 
-bat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie network-manager-applet 
+bat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet 
 imagemagick thunar neofetch vlc scrot wget p7zip python-pip
 ```
 
 # Personalización
 ```bash
 cd 
-cp ~/Desktop/repos/dotfiles/.config . 
+cp -r ~/Desktop/repos/dotfiles/.config . 
 ```
 
 ###### Wallpaper
