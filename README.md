@@ -121,6 +121,12 @@ cd ~/Desktop/repos/dotfiles/move
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
+## Bloqueo de pantalla con i3lock
+
+```bash
+sudo cp move/i3lock-fancy-rapid /opt/
+```
+
 ## Tema rofi
 
 ```bash
@@ -167,7 +173,3 @@ sudo pacman -S discord
 paru -S libreoffice-bin
 paru -S librewolf-bin
 ```
-
-Completar!!!!!!!!!!!
-- neovim 
-- ranger
