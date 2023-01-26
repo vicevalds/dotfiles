@@ -16,4 +16,4 @@ nm-applet &
 udiskie -t &
 
 # Wallpaper
-feh --bg-scale ~/Images/flowers_DALL-E.png & 
+feh --bg-tile ~/.config/qtile/themes/warning.png & 

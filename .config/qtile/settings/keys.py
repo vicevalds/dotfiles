@@ -74,6 +74,9 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     # Browser
     ([mod], "b", lazy.spawn("firefox")),
 
+    # Block
+    ([mod, "control"], "b", lazy.spawn("/home/vice/./.i3lock-fancy-rapid 5 3")),
+
     # File Explorer
     ([mod], "e", lazy.spawn("ranger")),
 
