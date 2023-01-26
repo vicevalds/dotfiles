@@ -9,6 +9,7 @@ pacman -Syu
 pacman -Sy archlinux-keyring
 pacman -Sy openssl
 ```
+
 ###### Cargador de arranque
 
 ```bash
@@ -40,6 +41,16 @@ ejecuten comandos.
 pacman -S xorg xorg-server
 ```
 
+###### Detectar otros sistemas operativos
+
+```bash
+sudo pacman -S os-prober
+sudo os-prober
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+> En caso de no funcionar, se debe descomentar #GRUB_DISABLE_OS_PROBER=false, 
+en */etc/default/grub*. 
+
 # Instalación dotfiles
 
 ```bash
@@ -47,6 +58,8 @@ cd
 mkdir -p Desktop/repos
 cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
+cd dotfiles
+cp -r .config /home/<user>/
 ```
 
 ## Aur helper
@@ -72,7 +85,15 @@ sudo cp 00.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallp
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
 
-###### Activar widget para ver actualizaciones disponibles
+# Software
+
+```bash
+sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting
+bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet
+imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip
+```
+
+## Activar widget para ver actualizaciones disponibles
 
 ```bash
 sudo pacman -S pacman-contrib
@@ -99,28 +120,7 @@ cd ~/Desktop/repos/dotfiles/move
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
-## Software
-
-```bash
-sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting 
-bat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet 
-imagemagick thunar neofetch vlc scrot wget p7zip python-pip
-```
-
-# Personalización
-```bash
-cd 
-cp -r ~/Desktop/repos/dotfiles/.config . 
-```
-
-###### Wallpaper
-```bash
-cd
-mkdir Images
-cp ~/Desktop/repos/dotfiles/move/flowers_DALL-E.png Images/
-```
-
-###### Tema rofi
+## Tema rofi
 
 ```bash
 cd ~/Desktop/repos/dotfiles/move
@@ -128,7 +128,7 @@ cp onedark.rasi /usr/share/rofi/themes
 rofi-theme-selector
 ```
 
-###### Zsh
+## Zsh
 
 ```bash
 cd 
@@ -137,14 +137,14 @@ usermod --shell /bin/zsh <user>
 sudo usermod --shell /bin/zsh root
 ```
 
-###### Powerlevel10k
+## Powerlevel10k
 Powerlevel10k proviene de este repositorio.
 ```bash
 cd 
 cp ~/Desktop/repos/dotfiles/.p10k.zsh . 
 ```
 
-###### Fzf
+## Fzf
 Fzf proviene de este repositorio.
 ```bash
 updatedb
@@ -152,7 +152,7 @@ cd
 cp -r ~/Desktop/repos/dotfiles/.f* . 
 ```
 
-###### Personalizacion Root
+## Personalizacion Root
 
 ```bash
 sudo su
@@ -170,4 +170,3 @@ paru -S librewolf-bin
 Completar!!!!!!!!!!!
 - neovim 
 - ranger
-- bloqueo de pantalla
