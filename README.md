@@ -88,9 +88,10 @@ sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 # Software
 
 ```bash
-sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions zsh-syntax-highlighting
-bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet
-imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip
+sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions 
+zsh-syntax-highlighting bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon 
+brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch 
+vlc scrot i3lock wget p7zip python-pip
 ```
 
 ## Activar widget para ver actualizaciones disponibles
