@@ -81,7 +81,7 @@ systemctl enable lightdm.service
 cd ~/Desktop/repos/dotfiles/move/
 sudo cp main.js index.css /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
 sudo rm /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/*
-sudo cp 00.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
+sudo cp logoarch.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
 
@@ -92,6 +92,13 @@ sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestio
 zsh-syntax-highlighting bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon 
 brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch 
 vlc scrot i3lock wget p7zip python-pip
+```
+
+## Ajustar neovim
+
+```bash
+cd /bin
+sudo ln -sf nvim vim
 ```
 
 ## Activar widget para ver actualizaciones disponibles
@@ -124,6 +131,7 @@ cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ## Bloqueo de pantalla con i3lock
 
 ```bash
+cd ~/Desktop/repos/dotfiles/move
 sudo cp move/i3lock-fancy-rapid /opt/
 ```
 
@@ -131,7 +139,7 @@ sudo cp move/i3lock-fancy-rapid /opt/
 
 ```bash
 cd ~/Desktop/repos/dotfiles/move
-cp onedark.rasi /usr/share/rofi/themes
+cp onedark.rasi /usr/share/rofi/themes/
 rofi-theme-selector
 ```
 
@@ -172,4 +180,15 @@ cp ~/Desktop/repos/dotfiles/move/root_home/* .
 sudo pacman -S discord
 paru -S libreoffice-bin
 paru -S librewolf-bin
+```
+
+## BlackArch Repositorie
+[Link](https://www.blackarch.org/downloads.html)
+```bash
+cd ~/Desktop/repos/
+curl -O https://blackarch.org/strap.sh
+echo 5ea40d49ecd14c2e024deecf90605426db97ea0c strap.sh | sha1sum -c
+chmod +x strap.sh
+sudo ./strap.sh
+sudo pacman -Syu
 ```
