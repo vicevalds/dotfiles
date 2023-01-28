@@ -8,27 +8,43 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Colors	Foreground Code 	Background Code 
-# -------------------------------------------------------
-# Black 		30 			40 	
-# Red 			31 			41 	
-# Green 		32 			42 	
-# Brown 		33 			43 	
-# Blue 			34 			44 	
-# Purple 		35 			45 	
-# Cyan 			36 			46 	
-# Light Gray 		37 			47
-# Dark Gray 		1;30 			1;40 	
-# Light Red 		1;31 			1;41 	
-# Light Green 		1;32 			1;42 	
-# Yellow 		1;33 			1;43 	
-# Light Blue 		1;34 			1;44 	
-# Light Purple 		1;35 			1;45 	
-# Light Cyan 		1;36 			1;46 	
-# White 		1;37 			1;47 	
-
-# Prompt
+#Prompt
 #PROMPT=
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+function rmk(){
+	scrub -p dod $1
+	shred -zun 10 -v $1
+}
+
+
+function theme(){
+	if [ $# -eq 1 ]; then
+		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
+    			echo "{\"theme\": \"$1\"}" > ~/.config/qtile/config.json
+    			feh --bg-fill ~/.config/qtile/themes/$1.png
+    			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con: return+ctrl+r"
+		else
+			echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"			
+		fi
+  	elif [ $# -eq 0 ]; then
+    		echo -e "\t${greenColour}[.]${endColour} Temas disponibles:"
+  		echo -e "$(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1)"
+	else
+    		echo -e "\t${redColour}[!]${endColour} Numero de argumentos invalido
+			\n\tEjemplo: theme [THEME]"
+  	fi	
+}
+
 
 # alias
 alias dir='dir --color=auto'
@@ -37,8 +53,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 #####################################################
-# Auto completion / suggestion
-# Mixing zsh-autocomplete and zsh-autosuggestions
 # Jobs: suggest files / foldername / histsory bellow the prompt
 # Requires: zsh-autosuggestions (packaging by Debian Team)
 # Jobs: Fish-like suggestion for command history
@@ -59,8 +73,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-sudo/sudo.plugin.zsh
 
 # Vi mode
-bindkey -v
-export KEYTIMEOUT=1
+#bindkey -v
+#export KEYTIMEOUT=1
 
 # Save type history for completion and easier life
 HISTFILE=~/.zsh_history
@@ -76,7 +90,6 @@ source /home/vice/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # Custom Aliases
 alias cat='bat'
-alias catn='/bin/cat'
 alias catnp='bat --no-paging'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
@@ -89,9 +102,6 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-
-# VI Mode
-# bindkey -v
 
 # Use modern completion system
 autoload -Uz compinit

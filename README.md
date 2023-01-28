@@ -88,15 +88,15 @@ sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 # Software
 
 ```bash
-sudo pacman -S kitty rofi redshift picom neovim feh ranger zsh zsh-autosuggestions 
-zsh-syntax-highlighting bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon 
-brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch 
-vlc scrot i3lock wget p7zip python-pip
+sudo pacman -S kitty rofi redshift picom feh ranger zsh bat mdcat lsd locate cbatticon pulseaudio 
+pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick 
+thunar neofetch vlc scrot i3lock wget p7zip python-pip
 ```
 
-## Ajustar neovim
+## Instalar y ajustar neovim
 
 ```bash
+
 cd /bin
 sudo ln -sf nvim vim
 ```
@@ -128,12 +128,19 @@ cd ~/Desktop/repos/dotfiles/move
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
-## Bloqueo de pantalla con i3lock
+## Bloqueo de pantalla con i3lock-fancy-rapid
 
 ```bash
 cd ~/Desktop/repos/dotfiles/move
 sudo cp move/i3lock-fancy-rapid /opt/
 ```
+
+
+## Neovim con NVChad
+Instalar la version de [neovim](https://github.com/neovim/neovim/releases) 
+indicada por [NVChad](https://nvchad.com/quickstart/install).
+Fuente: [GitHub](https://github.com/NvChad/NvChad) 
+
 
 ## Tema rofi
 
@@ -146,21 +153,30 @@ rofi-theme-selector
 ## Zsh
 
 ```bash
+paru -S zsh-autosuggestions zsh-syntax-highlighting
 cd 
 cp ~/Desktop/repos/dotfiles/.z* . 
 usermod --shell /bin/zsh <user>
 sudo usermod --shell /bin/zsh root
+paru -S scrub
 ```
 
+> Plugin sudo para zsh de este [repositorio](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh).
+>```bash
+>cd ~/Desktop/repos/dotfiles/move/
+>cp zsh-sudo /usr/share/zsh/plugins/
+>```
+>>Para ocupar usar esc-esc o alt-esc
+
 ## Powerlevel10k
-Powerlevel10k proviene de este repositorio.
+Powerlevel10k proviene de este [repositorio](https://github.com/romkatv/powerlevel10k).
 ```bash
 cd 
 cp ~/Desktop/repos/dotfiles/.p10k.zsh . 
 ```
 
 ## Fzf
-Fzf proviene de este repositorio.
+Fzf proviene de este [repositorio](https://github.com/junegunn/fzf).
 ```bash
 updatedb
 cd 
