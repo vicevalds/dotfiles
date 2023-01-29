@@ -26,6 +26,6 @@ if [ $# -eq 1 ]; then
 	usermod --shell /bin/zsh $1
 fi
 
-echo "A continuación selecciona onedark para el tema de rofi"
+echo -e "\n\t\t[!] A continuación selecciona onedark como el tema de rofi, con atl+a\n"
 sleep 3  
 rofi-theme-selector

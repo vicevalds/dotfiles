@@ -105,7 +105,7 @@ git clone https://github.com/vicevalds/dotfiles.git
 >./install.sh
 >```
 >A considerar:
->1- No contempla la intalación de neovim y NVChad
+>1. No contempla la intalación de neovim y NVChad
 >Para copiar los ficheros para el usuario no privilegiado se le debe entregar 
 >al ejecutable el nombre del usuario como parametro.
 >```bash
@@ -238,8 +238,8 @@ Contempla como dependencia el paquete *locate*.
 updatedb
 ```
 Utilizar fzf:
-	1-ctrl+t para buscar en un directorio
-	2-ctrl+r para ver coincidencias del historial en la terminal 
+1. ctrl+t para buscar en un directorio
+2. ctrl+r para ver coincidencias del historial en la terminal 
 
 ## Personalizacion del entorno root
 
