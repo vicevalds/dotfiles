@@ -30,10 +30,12 @@ function rmk(){
 function theme(){
 	if [ $# -eq 1 ]; then
 		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
-    			echo "{\"theme\": \"$1\"}" > ~/.config/qtile/config.json
+			actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}')
+                        sed -i "s/${actual}/${1}/g" .config/qtile/autostart.sh    			
+			echo "{\"theme\": \"$1\"}" > ~/.config/qtile/config.json
     			feh --bg-fill ~/.config/qtile/themes/$1.png
-    			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con: return+ctrl+r"
-		else
+    			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con: win+ctrl+r"
+  		else
 			echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"			
 		fi
   	elif [ $# -eq 0 ]; then
@@ -53,6 +55,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 #####################################################
+# Auto completion / suggestion
+# Mixing zsh-autocomplete and zsh-autosuggestions
 # Jobs: suggest files / foldername / histsory bellow the prompt
 # Requires: zsh-autosuggestions (packaging by Debian Team)
 # Jobs: Fish-like suggestion for command history
@@ -126,3 +130,18 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/vice/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/vice/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/vice/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/vice/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

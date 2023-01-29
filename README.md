@@ -29,13 +29,13 @@ systemctl enable NetworkManager.service
 
 ```bash
 passwd
-useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user>
-passwd <user>
+useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user name>
+passwd <user name>
 ```
 > editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
 ejecuten comandos.
 
-###### Sistema de visualización
+###### Paquetes de visualización
 
 ```bash
 pacman -S xorg xorg-server
@@ -51,18 +51,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 > En caso de no funcionar, se debe descomentar #GRUB_DISABLE_OS_PROBER=false, 
 en */etc/default/grub*. 
 
-# Instalación dotfiles
-
-```bash
-cd
-mkdir -p Desktop/repos
-cd Desktop/repos/
-git clone https://github.com/vicevalds/dotfiles.git
-cd dotfiles
-cp -r .config /home/<user>/
-```
-
-## Aur helper
+### Aur helper
 
 ```bash
 sudo pacman -S git base-devel
@@ -72,13 +61,42 @@ cd paru
 makepkg -si
 ```
 
+### BlackArch unofficial user repository
+[Link](https://www.blackarch.org/downloads.html)
+```bash
+cd ~/Desktop/repos/
+curl -O https://blackarch.org/strap.sh
+echo 5ea40d49ecd14c2e024deecf90605426db97ea0c strap.sh | sha1sum -c
+chmod +x strap.sh
+sudo ./strap.sh
+sudo pacman -Syu
+```
+
+# Instalación dotfiles
+
+```bash
+cd
+mkdir -p Desktop/repos
+cd Desktop/repos/
+git clone https://github.com/vicevalds/dotfiles.git
+cd dotfiles
+cp -r .config .fz* .z* .p* ~/.
+```
+
+> Para instalar de manera automatica los ficheros del directorio *install* 
+> ejecutar como root el fichero *install.sh*.
+> 
+> ```bash
+> ./install.sh
+> ```
+
 # Entorno de escritorio
 
 ```bash
 sudo pacman -S qtile lightdm lightdm-webkit2-greeter 
 paru -S lightdm-webkit2-theme-arch 
 systemctl enable lightdm.service
-cd ~/Desktop/repos/dotfiles/move/
+cd ~/Desktop/repos/dotfiles/install/
 sudo cp main.js index.css /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
 sudo rm /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/*
 sudo cp logoarch.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
@@ -93,13 +111,21 @@ pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-a
 thunar neofetch vlc scrot i3lock wget p7zip python-pip
 ```
 
-## Instalar y ajustar neovim
+## Instalar y ajustar neovim con NVChad
+
+[NVChad](https://nvchad.com/quickstart/install) indica la version de [neovim](https://github.com/neovim/neovim/releases)
+necesaria para que la IDE sea estable. Fuente: [GitHub](https://github.com/NvChad/NvChad).
 
 ```bash
-
+cd ~/Downloads/
+tar -xvf nvim-linux64*
+mv nvim-linux64 /opt
 cd /bin
+sudo ln -sf /opt/nvim-linux64/bin/nvim nvim
 sudo ln -sf nvim vim
 ```
+> Luego instalar [NVChad](https://nvchad.com/quickstart/install) como lo indica en la web.
+
 
 ## Activar widget para ver actualizaciones disponibles
 
@@ -115,7 +141,7 @@ sudo pacman -S firefox
 ## Theme, fonts and icons
 
 ```bash
-cd ~/Desktop/repos/dotfiles/move
+cd ~/Desktop/repos/dotfiles/install/
 cp -r Hack-Nerd-Font /usr/share/fonts
 cp -r Tela-purple-dark /usr/share/icons
 cp -r Lavanda-Dark /usr/share/themes
@@ -124,71 +150,67 @@ cp -r Lavanda-Dark /usr/share/themes
 ## Notificaciones
 ```bash
 sudo pacman -S libnotify notification-daemon
-cd ~/Desktop/repos/dotfiles/move
+cd ~/Desktop/repos/dotfiles/install
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
 ## Bloqueo de pantalla con i3lock-fancy-rapid
 
 ```bash
-cd ~/Desktop/repos/dotfiles/move
-sudo cp move/i3lock-fancy-rapid /opt/
+cd ~/Desktop/repos/dotfiles/install
+sudo cp install/i3lock-fancy-rapid /opt/
 ```
 
-
-## Neovim con NVChad
-Instalar la version de [neovim](https://github.com/neovim/neovim/releases) 
-indicada por [NVChad](https://nvchad.com/quickstart/install).
-Fuente: [GitHub](https://github.com/NvChad/NvChad) 
-
-
 ## Tema rofi
-
+Tema onedark considera la instalación de los inconos Tela-purple-dark en el fichero .rasi
 ```bash
-cd ~/Desktop/repos/dotfiles/move
+cd ~/Desktop/repos/dotfiles/install
 cp onedark.rasi /usr/share/rofi/themes/
 rofi-theme-selector
 ```
 
 ## Zsh
 
+Para usar zsh se debe establecer como terminar por defecto del usuario 
+
 ```bash
 paru -S zsh-autosuggestions zsh-syntax-highlighting
 cd 
-cp ~/Desktop/repos/dotfiles/.z* . 
-usermod --shell /bin/zsh <user>
+usermod --shell /bin/zsh $USER
 sudo usermod --shell /bin/zsh root
 paru -S scrub
 ```
 
-> Plugin sudo para zsh de este [repositorio](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh).
->```bash
->cd ~/Desktop/repos/dotfiles/move/
->cp zsh-sudo /usr/share/zsh/plugins/
->```
->>Para ocupar usar esc-esc o alt-esc
+> [Plugin-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) para zsh.
+> ```bash
+> cd ~/Desktop/repos/dotfiles/install/
+> cp zsh-sudo /usr/share/zsh/plugins/
+> ```
+>> Para ocupar, usar esc-esc o alt-esc.
 
 ## Powerlevel10k
-Powerlevel10k proviene de este [repositorio](https://github.com/romkatv/powerlevel10k).
+Para cambiar las configuraciones de la powerlevel10k se debe ejecutar el fichero .p10k.zsh.
+La configuracion es unica para cada usuario.
+
 ```bash
-cd 
-cp ~/Desktop/repos/dotfiles/.p10k.zsh . 
+./.p10k.zsh
 ```
 
 ## Fzf
-Fzf proviene de este [repositorio](https://github.com/junegunn/fzf).
+[Fzf](https://github.com/junegunn/fzf), buscador inteligente. Antes de utilizar 
+se deben sincronizar los archivos del sistema con el comando *updatedb*.
+Contempla como dependencia el paquete *locate*. 
+
 ```bash
 updatedb
-cd 
-cp -r ~/Desktop/repos/dotfiles/.f* . 
 ```
 
-## Personalizacion Root
+## Personalizacion del entorno root
 
 ```bash
 sudo su
 cd
-cp ~/Desktop/repos/dotfiles/move/root_home/* . 
+cp ~/Desktop/repos/dotfiles/install/root_home/* . 
 ```
 
 ## Utilidades
@@ -196,15 +218,4 @@ cp ~/Desktop/repos/dotfiles/move/root_home/* .
 sudo pacman -S discord
 paru -S libreoffice-bin
 paru -S librewolf-bin
-```
-
-## BlackArch Repositorie
-[Link](https://www.blackarch.org/downloads.html)
-```bash
-cd ~/Desktop/repos/
-curl -O https://blackarch.org/strap.sh
-echo 5ea40d49ecd14c2e024deecf90605426db97ea0c strap.sh | sha1sum -c
-chmod +x strap.sh
-sudo ./strap.sh
-sudo pacman -Syu
 ```
