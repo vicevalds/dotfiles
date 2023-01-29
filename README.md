@@ -1,5 +1,20 @@
 # dotfiles
 
+Mis dotfiles corresponden a una personalización del entorno de escritorio 
+diseñado por [Antonio Sarosi](https://github.com/antoniosarosi/dotfiles).
+
+### Componentes:
+
+| Software             | Función                    |
+| -------------------- | -------------------------- |
+| Qtile                | Window tiling manager      |
+| Kitty                | Terminal                   |
+| Zsh                  | Interpretador de comandos  |
+| Rofi                 | Menu                       |
+| Thunar               | Explorador de archivos GUI |
+| Neovim (NVChad)      | Editor de texto            |
+
+
 # Instalación Arch
 
 ###### Error de la .iso
@@ -32,7 +47,7 @@ passwd
 useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user name>
 passwd <user name>
 ```
-> editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
+>editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
 ejecuten comandos.
 
 ###### Paquetes de visualización
@@ -48,7 +63,7 @@ sudo pacman -S os-prober
 sudo os-prober
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-> En caso de no funcionar, se debe descomentar #GRUB_DISABLE_OS_PROBER=false, 
+>En caso de no funcionar, se debe descomentar #GRUB_DISABLE_OS_PROBER=false, 
 en */etc/default/grub*. 
 
 ### Aur helper
@@ -79,20 +94,26 @@ cd
 mkdir -p Desktop/repos
 cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
-cp -r .[cfzp]* ~/.
 ```
 
-> Para instalar de manera automatica los ficheros del directorio *install* 
-> ejecutar el fichero *install.sh* como usuario privilegiado.
-> 
-> ```bash
-> sudo su
-> install/./install.sh
-> ```
-> De lo contrario, se presentan los pasos a seguir.
-No contempla la intalación de neovim y NVChad
-
-Usuario no privilegiado
+>Para instalar de manera automatica los ficheros del directorio *install* 
+>ejecutar el fichero *install.sh* como usuario privilegiado.
+>
+>```bash
+>sudo su
+>cd Desktop/repos/dotfiles/
+>./install.sh
+>```
+>A considerar:
+>1- No contempla la intalación de neovim y NVChad
+>Para copiar los ficheros para el usuario no privilegiado se le debe entregar 
+>al ejecutable el nombre del usuario como parametro.
+>```bash
+>./install.sh <user>
+>``` 
+>De lo contrario, no serán importados por lo que se deberá ejecutar el 
+>comando *cp -r .[cfzp]* ~/.* estando dentro de los dotfiles y como usuario 
+>no privilegiado.
 
 # Entorno de escritorio
 
@@ -102,8 +123,13 @@ systemctl enable lightdm.service
 cd ~/Desktop/repos/dotfiles/install/
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
-El tema para lightdm [lightdm-webkit2-theme-arch]()
-de lo contrario descargar desde aur.
+Mi tema de lightdm es un fork de este repositorio 
+[lightdm-webkit2-theme-arch](https://github.com/kenogo/lightdm-webkit2-theme-arch), 
+el cual se puede encontrar en aur.
+
+>Contiene cambios esteticos como distintos [wallpapers](https://bbs.archlinux.org/viewtopic.php?id=259604) 
+y fuentes.
+
 
 # Software
 
@@ -141,6 +167,11 @@ sudo pacman -S firefox
 ```
 
 ## Theme, fonts and icons
+>Para evitar la descargar por separado de cada componente, estos están contenidos en el repositorio.
+Repositorios originales:
+Theme [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme)
+Icons [Tela-purple-dark](https://github.com/vinceliuice/Tela-icon-theme)
+Font [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads)
 
 ```bash
 cd ~/Desktop/repos/dotfiles/install/
@@ -164,7 +195,8 @@ sudo cp i3lock-fancy-rapid /opt/
 ```
 
 ## Tema rofi
-Tema onedark considera la instalación de los inconos Tela-purple-dark en el fichero .rasi
+Tema [onedark](https://github.com/newmanls/rofi-themes-collection) considera los 
+inconos Tela-purple-dark en el fichero .rasi
 ```bash
 cd ~/Desktop/repos/dotfiles/install
 cp onedark.rasi /usr/share/rofi/themes/
@@ -180,7 +212,6 @@ paru -S zsh-autosuggestions zsh-syntax-highlighting
 cd 
 usermod --shell /bin/zsh $USER
 sudo usermod --shell /bin/zsh root
-paru -S scrub
 ```
 
 > [Plugin-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) para zsh.
@@ -199,13 +230,16 @@ La configuracion es unica para cada usuario.
 ```
 
 ## Fzf
-[Fzf](https://github.com/junegunn/fzf), buscador inteligente. Antes de utilizar 
-se deben sincronizar los archivos del sistema con el comando *updatedb*.
+[Fzf](https://github.com/junegunn/fzf), buscador inteligente. 
+Antes de utilizar se deben sincronizar los archivos del sistema con el comando *updatedb*.
 Contempla como dependencia el paquete *locate*. 
 
 ```bash
 updatedb
 ```
+Utilizar fzf:
+	1-ctrl+t para buscar en un directorio
+	2-ctrl+r para ver coincidencias del historial en la terminal 
 
 ## Personalizacion del entorno root
 
@@ -220,4 +254,5 @@ cp ~/Desktop/repos/dotfiles/install/root_home/.[cfzp]* .
 sudo pacman -S discord
 paru -S libreoffice-bin
 paru -S librewolf-bin
+sudo pacman -S scrub
 ```

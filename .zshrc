@@ -32,8 +32,8 @@ function theme(){
 	if [ $# -eq 1 ]; then
 		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
 			actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}')
-                        sed -i "s/${actual}/${1}/g" .config/qtile/autostart.sh    			
-			echo "{\"theme\": \"$1\"}" > ~/.config/qtile/config.json
+                        sed -i "s/${actual}/${1}/g" ~/.config/qtile/autostart.sh    			
+			sed -i "s/${actual}/${1}/g" ~/.config/qtile/config.json
     			feh --bg-fill ~/.config/qtile/themes/$1.png
     			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con: win+ctrl+r"
   		else
@@ -101,6 +101,7 @@ alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
+alias img='kitty +kitten icat'
 
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
