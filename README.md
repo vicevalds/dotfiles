@@ -84,7 +84,7 @@ cp -r .config .fz* .z* .p* ~/.
 ```
 
 > Para instalar de manera automatica los ficheros del directorio *install* 
-> ejecutar como root el fichero *install.sh*.
+> ejecutar el fichero *install.sh*.
 > 
 > ```bash
 > ./install.sh
