@@ -79,29 +79,31 @@ cd
 mkdir -p Desktop/repos
 cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
-cd dotfiles
-cp -r .config .fz* .z* .p* ~/.
+cp -r .[cfzp]* ~/.
 ```
 
 > Para instalar de manera automatica los ficheros del directorio *install* 
-> ejecutar el fichero *install.sh*.
+> ejecutar el fichero *install.sh* como usuario privilegiado.
 > 
 > ```bash
-> ./install.sh
+> sudo su
+> install/./install.sh
 > ```
+> De lo contrario, se presentan los pasos a seguir.
+No contempla la intalación de neovim y NVChad
+
+Usuario no privilegiado
 
 # Entorno de escritorio
 
 ```bash
 sudo pacman -S qtile lightdm lightdm-webkit2-greeter 
-paru -S lightdm-webkit2-theme-arch 
 systemctl enable lightdm.service
 cd ~/Desktop/repos/dotfiles/install/
-sudo cp main.js index.css /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch
-sudo rm /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/*
-sudo cp logoarch.png /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-arch/wallpapers/00.png
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
+El tema para lightdm [lightdm-webkit2-theme-arch]()
+de lo contrario descargar desde aur.
 
 # Software
 
@@ -158,7 +160,7 @@ cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 
 ```bash
 cd ~/Desktop/repos/dotfiles/install
-sudo cp install/i3lock-fancy-rapid /opt/
+sudo cp i3lock-fancy-rapid /opt/
 ```
 
 ## Tema rofi
@@ -210,7 +212,7 @@ updatedb
 ```bash
 sudo su
 cd
-cp ~/Desktop/repos/dotfiles/install/root_home/* . 
+cp ~/Desktop/repos/dotfiles/install/root_home/.[cfzp]* . 
 ```
 
 ## Utilidades

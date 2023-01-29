@@ -21,10 +21,11 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
-function rmk(){
-	scrub -p dod $1
-	shred -zun 10 -v $1
-}
+#requiere scrub y shred, funcion para eliminar por completo un fichero
+#function rmk(){
+#	scrub -p dod $1
+#	shred -zun 10 -v $1
+#}
 
 
 function theme(){
