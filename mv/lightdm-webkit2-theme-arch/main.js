@@ -27,7 +27,7 @@ function pad(a, b) {
 }
 
 function getImg() {
-    index = Math.floor(Math.random() * 1);
+    index = Math.floor(Math.random() * 2);
     console.log(pad(index,2));
     document.getElementsByTagName('body')[0].style.backgroundImage = 
 	"url(wallpapers/" + pad(index, 2) + ".png)";

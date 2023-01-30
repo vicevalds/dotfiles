@@ -12,12 +12,12 @@ cp -r mv/lightdm-webkit2-theme-arch/ /usr/share/lightdm-webkit/themes/
 cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
 
 cp -r mv/Hack-Nerd-Font /usr/share/fonts/
-cp -r mv/Tela-purple-dark /usr/share/icons/
-cp -r mv/Lavanda-Dark /usr/share/themes/
+#cp -r mv/Tela-purple-dark /usr/share/icons/
+#cp -r mv/Lavanda-Dark /usr/share/themes/
 
 chown $1:$1 /usr/share/fonts/Hack-Nerd-Font
-chown $1:$1 /usr/share/icons/Tela-purple-dark
-chown $1:$1 /usr/share/themes/Lavanda-Dark
+#chown $1:$1 /usr/share/icons/Tela-purple-dark
+#chown $1:$1 /usr/share/themes/Lavanda-Dark
 
 cp mv/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 cp mv/i3lock-fancy-rapid /opt/
@@ -25,19 +25,20 @@ cp mv/onedark.rasi /usr/share/rofi/themes/
 
 #root
 cp -r mv/zsh-sudo /usr/share/zsh/plugins/
-cp -r mv/root_home/.[cpzf]* /root/
+cp -r mv/root_home/.[z]* /root/
+cp -r .config/[gknpqrkn]* /root/.config/
 
 usermod --shell /bin/zsh root
 
 #$USER
-cp -r .[pzf]* /home/$1/
+cp -r .[z]* /home/$1/
 cp -r .config/[gknpqrkn]* /home/$1/.config/
 
-chown $1:$1 /home/$1/.[pzf]*
+chown $1:$1 /home/$1/.[z]*
 chown $1:$1 /home/$1/.config/[gknpqrkn]*
 
 usermod --shell /bin/zsh $1
 
-chmod -R 755 /usr/share/mime/
+#chmod -R 755 /usr/share/mime/
 
 reboot
