@@ -53,7 +53,7 @@ ejecuten comandos.
 ###### Paquetes de visualización
 
 ```bash
-pacman -S xorg xorg-server
+pacman -S xorg xorg-server xorg-xinit
 ```
 
 ###### Detectar otros sistemas operativos
@@ -70,6 +70,7 @@ en */etc/default/grub*.
 
 ```bash
 sudo pacman -S git base-devel
+mkdir -p Desktop/repos
 cd Desktop/repos/
 git clone https://aur.archlinux.org/paru-git.git
 cd paru
@@ -90,37 +91,36 @@ sudo pacman -Syu
 # Instalación dotfiles
 
 ```bash
-cd
-mkdir -p Desktop/repos
 cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
 ```
 
->Para instalar de manera automatica los ficheros del directorio *install* 
->ejecutar el fichero *install.sh* como usuario privilegiado.
->
->```bash
->sudo su
->cd Desktop/repos/dotfiles/
->./install.sh
->```
->A considerar:
->1. No contempla la intalación de neovim y NVChad
->Para copiar los ficheros para el usuario no privilegiado se le debe entregar 
->al ejecutable el nombre del usuario como parametro.
->```bash
->./install.sh <user>
->``` 
->De lo contrario, no serán importados por lo que se deberá ejecutar el 
->comando *cp -r .[cfzp]* ~/.* estando dentro de los dotfiles y como usuario 
->no privilegiado.
+## Instalacion automatica
 
-# Entorno de escritorio
+Para instalar de manera automatica los ficheros del directorio *mv* 
+ejecutar el fichero *install.sh* como usuario privilegiado.
+
+```bash
+sudo su
+cd Desktop/repos/dotfiles/
+./install.sh <user>
+```
+A considerar:
+1. No contempla la intalación de neovim y NVChad.
+2. Se debe instalar por separado el tema y los iconos.
+3. Los iconos a descargar deben ser Tela-purple-dark.
+4. Se debe instalar fzf desde su repositorio asi como la powerlevel10k.
+5. Se debe copiar la configuracion de la powerlevel10k en reemplazo de la generada
+por la instalacion desde su repositorio. 
+
+## Instalacion manual
+
+### Entorno de escritorio
 
 ```bash
 sudo pacman -S qtile lightdm lightdm-webkit2-greeter 
 systemctl enable lightdm.service
-cd ~/Desktop/repos/dotfiles/install/
+cd ~/Desktop/repos/dotfiles/mv/
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
 Mi tema de lightdm es un fork de este repositorio 
@@ -131,15 +131,16 @@ el cual se puede encontrar en aur.
 y fuentes.
 
 
-# Software
+### Software
 
 ```bash
-sudo pacman -S kitty rofi redshift picom feh ranger zsh bat mdcat lsd locate cbatticon pulseaudio 
+sudo pacman -S pacman-contrib kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio 
 pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick 
 thunar neofetch vlc scrot i3lock wget p7zip python-pip
 ```
 
-## Instalar y ajustar neovim con NVChad
+
+### Instalar y ajustar neovim con NVChad
 
 [NVChad](https://nvchad.com/quickstart/install) indica la version de [neovim](https://github.com/neovim/neovim/releases)
 necesaria para que la IDE sea estable. Fuente: [GitHub](https://github.com/NvChad/NvChad).
@@ -155,57 +156,41 @@ sudo ln -sf nvim vim
 > Luego instalar [NVChad](https://nvchad.com/quickstart/install) como lo indica en la web.
 
 
-## Activar widget para ver actualizaciones disponibles
-
-```bash
-sudo pacman -S pacman-contrib
-```
-
-> Browser
-```bash
-sudo pacman -S firefox
-```
-
 ## Theme, fonts and icons
->Para evitar la descargar por separado de cada componente, estos están contenidos en el repositorio.
-Repositorios originales:
 Theme [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme)
 Icons [Tela-purple-dark](https://github.com/vinceliuice/Tela-icon-theme)
 Font [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads)
 
 ```bash
-cd ~/Desktop/repos/dotfiles/install/
-cp -r Hack-Nerd-Font /usr/share/fonts
-cp -r Tela-purple-dark /usr/share/icons
-cp -r Lavanda-Dark /usr/share/themes
+cd ~/Downloads/
+cp -r Hack-Nerd-Font /usr/share/fonts/
+cp -r Tela-purple-dark /usr/share/icons/
+cp -r Lavanda-Dark /usr/share/themes/
 ```
 
-## Notificaciones
+### Notificaciones
 ```bash
 sudo pacman -S libnotify notification-daemon
-cd ~/Desktop/repos/dotfiles/install
+cd ~/Desktop/repos/dotfiles/mv
 cp org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 ```
 
-## Bloqueo de pantalla con i3lock-fancy-rapid
+### Bloqueo de pantalla con i3lock-fancy-rapid
 
 ```bash
-cd ~/Desktop/repos/dotfiles/install
+cd ~/Desktop/repos/dotfiles/mv
 sudo cp i3lock-fancy-rapid /opt/
 ```
 
-## Tema rofi
-Tema [onedark](https://github.com/newmanls/rofi-themes-collection) considera los 
-inconos Tela-purple-dark en el fichero .rasi
+### Tema rofi
+El tema onedark en mv/ es una modificacion del tema original [onedark](https://github.com/newmanls/rofi-themes-collection),
+pues considera iconos Tela-purple-dark y arregla un error respecto a la barra de seleccion.
 ```bash
-cd ~/Desktop/repos/dotfiles/install
-cp onedark.rasi /usr/share/rofi/themes/
-rofi-theme-selector
+sudo cp ~/Desktop/repos/dotfiles/mv/onedark.rasi /usr/share/rofi/themes/
 ```
 
-## Zsh
-
-Para usar zsh se debe establecer como terminar por defecto del usuario 
+### Zsh
+Para usar zsh se debe establecer como terminal por defecto del usuario 
 
 ```bash
 paru -S zsh-autosuggestions zsh-syntax-highlighting
@@ -216,12 +201,14 @@ sudo usermod --shell /bin/zsh root
 
 > [Plugin-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) para zsh.
 > ```bash
-> cd ~/Desktop/repos/dotfiles/install/
-> cp zsh-sudo /usr/share/zsh/plugins/
+> cp ~/Desktop/repos/dotfiles/mv/zsh-sudo /usr/share/zsh/plugins/
 > ```
 >> Para ocupar, usar esc-esc o alt-esc.
 
 ## Powerlevel10k
+Tras instalada la powerlevel10k desde su repositorio, se debe mover a .config y reemplazar el fichero
+.p10.zsh por el generado tras la instalacion.
+
 Para cambiar las configuraciones de la powerlevel10k se debe ejecutar el fichero .p10k.zsh.
 La configuracion es unica para cada usuario.
 

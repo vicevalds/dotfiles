@@ -1,31 +1,43 @@
 #!/bin/sh
 
 #Pacman 
-pacman -S qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh ranger zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
+pacman -S pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
 
 #Paru
 paru -S zsh-autosuggestions zsh-syntax-highlighting
 
 systemctl enable lightdm.service
 
-cp -r install/lightdm-webkit2-theme-arch/ /usr/share/lightdm-webkit/themes/
-cp install/lightdm-webkit2-greeter.conf install/lightdm.conf /etc/lightdm/
-cp -r install/Hack-Nerd-Font /usr/share/fonts/
-cp -r install/Tela-purple-dark /usr/share/icons/
-cp -r install/Lavanda-Dark /usr/share/themes/
-cp install/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
-cp install/i3lock-fancy-rapid /opt/
-cp install/onedark.rasi /usr/share/rofi/themes/
-cp -r install/zsh-sudo /usr/share/zsh/plugins/
-cp -r install/root_home/.[cpzf]* /root/
+cp -r mv/lightdm-webkit2-theme-arch/ /usr/share/lightdm-webkit/themes/
+cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
+
+cp -r mv/Hack-Nerd-Font /usr/share/fonts/
+cp -r mv/Tela-purple-dark /usr/share/icons/
+cp -r mv/Lavanda-Dark /usr/share/themes/
+
+chown $1:$1 /usr/share/fonts/Hack-Nerd-Font
+chown $1:$1 /usr/share/icons/Tela-purple-dark
+chown $1:$1 /usr/share/themes/Lavanda-Dark
+
+cp mv/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
+cp mv/i3lock-fancy-rapid /opt/
+cp mv/onedark.rasi /usr/share/rofi/themes/
+
+#root
+cp -r mv/zsh-sudo /usr/share/zsh/plugins/
+cp -r mv/root_home/.[cpzf]* /root/
 
 usermod --shell /bin/zsh root
 
-if [ $# -eq 1 ]; then
-	cp -r .[cpzf]* /home/$1/
-	usermod --shell /bin/zsh $1
-fi
+#$USER
+cp -r .[pzf]* /home/$1/
+cp -r .config/[gknpqrkn]* /home/$1/.config/
 
-echo -e "\n\t\t[!] A continuación selecciona onedark como el tema de rofi, con atl+a\n"
-sleep 3  
-rofi-theme-selector
+chown $1:$1 /home/$1/.[pzf]*
+chown $1:$1 /home/$1/.config/[gknpqrkn]*
+
+usermod --shell /bin/zsh $1
+
+chmod -R 755 /usr/share/mime/
+
+reboot

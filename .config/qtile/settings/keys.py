@@ -75,7 +75,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "b", lazy.spawn("firefox")),
 
     # Block
-    ([mod, "control"], "b", lazy.spawn("/opt/./.i3lock-fancy-rapid 5 3")),
+    ([mod, "control"], "b", lazy.spawn("/opt/./i3lock-fancy-rapid 5 3")),
 
     # File Explorer
     ([mod], "e", lazy.spawn("ranger")),
