@@ -17,6 +17,13 @@ diseñado por [Antonio Sarosi](https://github.com/antoniosarosi/dotfiles).
 
 # Instalación Arch
 
+###### iwctl
+```bash
+iwctl
+station show list
+station wlan0 connect <nombre red> <seguridad red>
+exit
+```
 ###### Error de la .iso
 
 ```bash
@@ -43,12 +50,11 @@ systemctl enable NetworkManager.service
 ###### Users
 
 ```bash
-passwd
 useradd -m -G wheel,storage,power,audio,network -s /bin/bash <user name>
 passwd <user name>
 ```
 >editar */etc/sudoers/* para permitir que los usuarios del grupo wheel
-ejecuten comandos.
+ejecuten comandos (usar sudo).
 
 ###### Paquetes de visualización
 
@@ -95,7 +101,7 @@ cd Desktop/repos/
 git clone https://github.com/vicevalds/dotfiles.git
 ```
 
-## Instalacion automatica
+## Instalacion automática
 
 Para instalar de manera automatica los ficheros del directorio *mv* 
 ejecutar el fichero *install.sh* como usuario privilegiado.
@@ -108,10 +114,11 @@ cd Desktop/repos/dotfiles/
 A considerar:
 1. No contempla la intalación de neovim y NVChad.
 2. Se debe instalar por separado el tema y los iconos.
-3. Los iconos a descargar deben ser Tela-purple-dark.
-4. Se debe instalar fzf desde su repositorio asi como la powerlevel10k.
-5. Se debe copiar la configuracion de la powerlevel10k en reemplazo de la generada
-por la instalacion desde su repositorio. 
+3. Los iconos son [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme)
+4. El tema debe ser [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme)
+5. Se debe instalar fzf desde su repositorio asi como la powerlevel10k.
+6. Se debe copiar la configuracion de la powerlevel10k en reemplazo de la generada
+tras la instalacion y personalización. 
 
 ## Instalacion manual
 
@@ -130,15 +137,21 @@ el cual se puede encontrar en aur.
 >Contiene cambios esteticos como distintos [wallpapers](https://bbs.archlinux.org/viewtopic.php?id=259604) 
 y fuentes.
 
-
 ### Software
 
 ```bash
 sudo pacman -S pacman-contrib kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio 
 pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick 
-thunar neofetch vlc scrot i3lock wget p7zip python-pip
+thunar neofetch vlc scrot i3lock wget p7zip python-pip lxappearance
 ```
 
+### Settings
+Copiar .config para $USER y roor 
+```bash
+cd Desktop/repos/dotfiles
+sudo cp -r mv/root_home/.[cz]* /root/
+cp -r .[cz]* /home/$USER/
+```
 
 ### Instalar y ajustar neovim con NVChad
 
@@ -157,15 +170,17 @@ sudo ln -sf nvim vim
 
 
 ## Theme, fonts and icons
-Theme [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme)
-Icons [Tela-purple-dark](https://github.com/vinceliuice/Tela-icon-theme)
 Font [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads)
+Icons [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme)
+Theme [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme)
+
+Ejecutar lxappearance para instalar el tema y los iconos.
 
 ```bash
 cd ~/Downloads/
-cp -r Hack-Nerd-Font /usr/share/fonts/
-cp -r Tela-purple-dark /usr/share/icons/
-cp -r Lavanda-Dark /usr/share/themes/
+sudo mv  Hack-Nerd-Font/ /usr/share/fonts/
+sudo mv  Tela-icon-theme/ /usr/share/icons/
+sudo mv  Lavanda-Dark/ /usr/share/themes/
 ```
 
 ### Notificaciones
@@ -184,7 +199,7 @@ sudo cp i3lock-fancy-rapid /opt/
 
 ### Tema rofi
 El tema onedark en mv/ es una modificacion del tema original [onedark](https://github.com/newmanls/rofi-themes-collection),
-pues considera iconos Tela-purple-dark y arregla un error respecto a la barra de seleccion.
+pues considera iconos Tela-icon-theme y arregla un error respecto al color de la barra de seleccion.
 ```bash
 sudo cp ~/Desktop/repos/dotfiles/mv/onedark.rasi /usr/share/rofi/themes/
 ```
@@ -194,49 +209,51 @@ Para usar zsh se debe establecer como terminal por defecto del usuario
 
 ```bash
 paru -S zsh-autosuggestions zsh-syntax-highlighting
-cd 
 usermod --shell /bin/zsh $USER
 sudo usermod --shell /bin/zsh root
 ```
 
-> [Plugin-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) para zsh.
-> ```bash
-> cp ~/Desktop/repos/dotfiles/mv/zsh-sudo /usr/share/zsh/plugins/
-> ```
->> Para ocupar, usar esc-esc o alt-esc.
-
-## Powerlevel10k
-Tras instalada la powerlevel10k desde su repositorio, se debe mover a .config y reemplazar el fichero
-.p10.zsh por el generado tras la instalacion.
-
-Para cambiar las configuraciones de la powerlevel10k se debe ejecutar el fichero .p10k.zsh.
-La configuracion es unica para cada usuario.
-
+[Plugin-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) para zsh.
 ```bash
-./.p10k.zsh
+cp ~/Desktop/repos/dotfiles/mv/zsh-sudo /usr/share/zsh/plugins/
 ```
+> Para ocupar, usar esc-esc o alt-esc.
 
-## Fzf
-[Fzf](https://github.com/junegunn/fzf), buscador inteligente. 
+### Powerlevel10k
+Tras instalada la [powerlevel10k](https://github.com/romkatv/powerlevel10k) tanto en el home del usuario como del root, 
+se debe mover el directorio a .config/ y luego reemplazar el fichero *dotfiles/.p10.zsh* 
+por el generado tras la instalacion.
+
+>Para cambiar las configuraciones de la powerlevel10k se debe ejecutar el fichero .p10k.zsh.
+>La configuracion es unica para cada usuario.
+>
+>```bash
+>./.p10k.zsh
+>```
+
+### Fzf: buscador inteligente
+Se debe instalar [Fzf](https://github.com/junegunn/fzf) tanto para el usuario root (/root/)
+como para el usuario no privilegiado (/home/$USER/). 
 Antes de utilizar se deben sincronizar los archivos del sistema con el comando *updatedb*.
 Contempla como dependencia el paquete *locate*. 
 
 ```bash
-updatedb
+sudo updatedb
 ```
 Utilizar fzf:
 1. ctrl+t para buscar en un directorio
 2. ctrl+r para ver coincidencias del historial en la terminal 
+3. alt+c entrar en el directorio preseleccionado
 
-## Personalizacion del entorno root
+### Personalizacion del entorno root
 
 ```bash
 sudo su
 cd
-cp ~/Desktop/repos/dotfiles/install/root_home/.[cfzp]* . 
+cp ~/Desktop/repos/dotfiles/mv/root_home/.[zcp]* . 
 ```
 
-## Utilidades
+### Utilidades
 ```bash
 sudo pacman -S discord
 paru -S libreoffice-bin
