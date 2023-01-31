@@ -28,7 +28,7 @@ grayColour="\e[0;37m\033[1m"
 #}
 
 
-function theme(){
+function chtheme(){
 	if [ $# -eq 1 ]; then
 		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
 			actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}')

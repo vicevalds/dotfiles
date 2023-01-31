@@ -22,23 +22,21 @@ chown $1:$1 /usr/share/fonts/Hack-Nerd-Font
 cp mv/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
 cp mv/i3lock-fancy-rapid /opt/
 cp mv/onedark.rasi /usr/share/rofi/themes/
+cp -r mv/zsh-sudo /usr/share/zsh/plugins/
 
 #root
-cp -r mv/zsh-sudo /usr/share/zsh/plugins/
 cp -r mv/root_home/.[z]* /root/
-cp -r .config/[gknpqrkn]* /root/.config/
+cp -r .config/ /root/
 
 usermod --shell /bin/zsh root
 
 #$USER
 cp -r .[z]* /home/$1/
-cp -r .config/[gknpqrkn]* /home/$1/.config/
+cp -r .config/ /home/$1/
 
 chown $1:$1 /home/$1/.[z]*
-chown $1:$1 /home/$1/.config/[gknpqrkn]*
+chown -R $1:$1 /home/$1/.config/
 
 usermod --shell /bin/zsh $1
-
-#chmod -R 755 /usr/share/mime/
 
 reboot
