@@ -8,9 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#Prompt
-#PROMPT=
-
 #Colours
 greenColour="\e[0;32m\033[1m"
 endColour="\033[0m\e[0m"
@@ -21,14 +18,14 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
-#requiere scrub y shred, funcion para eliminar por completo un fichero
-#function rmk(){
-#	scrub -p dod $1
-#	shred -zun 10 -v $1
-#}
+# Requiere scrub y shred, funcion para eliminar por completo un fichero
+function rmk(){
+	scrub -p dod $1
+	shred -zun 10 -v $1
+}
 
 
-function chtheme(){
+function theme(){
 	if [ $# -eq 1 ]; then
 		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
 			actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}')
@@ -66,8 +63,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
 zstyle ':autocomplete:*' min-input 2
-#bindkey $key[Up] up-line-or-history
-#bindkey $key[Down] down-line-or-history
 
 
 ##################################################

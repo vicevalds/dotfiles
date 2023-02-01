@@ -131,8 +131,7 @@ cd ~/Desktop/repos/dotfiles/mv/
 sudo cp lightdm-webkit2-greeter.conf lightdm.conf /etc/lightdm/
 ```
 Mi tema de lightdm es un fork de este repositorio 
-[lightdm-webkit2-theme-arch](https://github.com/kenogo/lightdm-webkit2-theme-arch), 
-el cual se puede encontrar en aur.
+[lightdm-webkit2-theme-arch](https://github.com/kenogo/lightdm-webkit2-theme-arch).
 
 >Contiene cambios esteticos como distintos [wallpapers](https://bbs.archlinux.org/viewtopic.php?id=259604) 
 y fuentes.
@@ -146,7 +145,7 @@ thunar neofetch vlc scrot i3lock wget p7zip python-pip lxappearance
 ```
 
 ### Settings
-Copiar .config para $USER y roor 
+Copiar .config y .zsh* para $USER y root 
 ```bash
 cd Desktop/repos/dotfiles
 sudo cp -r mv/root_home/.[cz]* /root/
@@ -160,7 +159,7 @@ necesaria para que la IDE sea estable. Fuente: [GitHub](https://github.com/NvCha
 
 ```bash
 cd ~/Downloads/
-tar -xvf nvim-linux64*
+tar -xzvf nvim-linux64*
 mv nvim-linux64 /opt
 cd /bin
 sudo ln -sf /opt/nvim-linux64/bin/nvim nvim

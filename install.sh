@@ -1,14 +1,19 @@
 #!/bin/sh
 
 #Pacman 
-pacman -S lxappearance pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
+pacman -S pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
 
 #Paru
 paru -S zsh-autosuggestions zsh-syntax-highlighting
 
+echo -e "\n\t[!] Utilidades\n\n"
+
+paru -S librewolf-bin
+
 systemctl enable lightdm.service
 
-cp -r mv/lightdm-webkit2-theme-arch/ /usr/share/lightdm-webkit/themes/
+cp -r mv/lightdm-webkit2-gif-theme/ /usr/share/lightdm-webkit/themes/
+chown -R $1:$1 /usr/share/lightdm-webkit/themes/lightdm-webkit2-gif-theme
 cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
 
 cp -r mv/Hack-Nerd-Font /usr/share/fonts/
