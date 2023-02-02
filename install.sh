@@ -22,7 +22,7 @@ if [ $# -eq 1 ]; then
 			pacman -S xorg xorg-server xorg-xinit pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
 
 			#Paru
-			paru -S zsh-autosuggestions zsh-syntax-highlighting
+			paru -S scrub zsh-autosuggestions zsh-syntax-highlighting
 
 			systemctl enable lightdm.service
 	
