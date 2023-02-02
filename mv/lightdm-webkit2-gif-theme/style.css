@@ -1,0 +1,38 @@
+body {
+    background-size: cover;
+    background-color: #0a0a0a;
+    color: #0a0a0a;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input::placeholder {
+    color: #e92224;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#input {
+    color: #372021;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-family: "Hack Nerd Font", monospace;
+    font-size: 24px;
+    text-align: right;
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+

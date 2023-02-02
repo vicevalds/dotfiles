@@ -26,7 +26,7 @@ if [ $# -eq 1 ]; then
 
 			systemctl enable lightdm.service
 	
-			git clone https://github.com/vicevalds/lightdm-webkit2-gif-theme /usr/share/lightdm-webkit/themes/
+			cp -r mv/lightdm-webkit2-gif-theme /usr/share/lightdm-webkit/themes/
 			cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
 
 			cp -r mv/Hack-Nerd-Font /usr/share/fonts/
