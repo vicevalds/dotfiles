@@ -1,39 +1,49 @@
 #!/bin/sh
 
-#Pacman 
-pacman -S pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
+if [ $# -eq 1 ]; then
+	if [ $1 -eq $(ls /home/ | grep "${1}") ]; then
+		#Pacman 
+		pacman -S pacman-contrib qtile lightdm lightdm-webkit2-greeter kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc scrot i3lock wget p7zip python-pip pacman-contrib libnotify notification-daemon
 
-#Paru
-paru -S zsh-autosuggestions zsh-syntax-highlighting
+		#Paru
+		paru -S zsh-autosuggestions zsh-syntax-highlighting
 
-echo -e "\n\t[!] Utilidades\n\n"
+		echo -e "\n\t[!] Utilidades\n\n"
 
-paru -S librewolf-bin
+		paru -S librewolf-bin
+	
+		systemctl enable lightdm.service
+	
+		git clone https://github.com/vicevalds/lightdm-webkit2-gif-theme /usr/share/lightdm-webkit/themes/
+		cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
 
-systemctl enable lightdm.service
+		cp -r mv/Hack-Nerd-Font /usr/share/fonts/
+		chown -R $1:$1 /usr/share/fonts/Hack-Nerd-Font
 
-cp -r mv/lightdm-webkit2-gif-theme/ /usr/share/lightdm-webkit/themes/
-chown -R $1:$1 /usr/share/lightdm-webkit/themes/lightdm-webkit2-gif-theme
-cp mv/lightdm-webkit2-greeter.conf mv/lightdm.conf /etc/lightdm/
+		cp mv/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
+		cp mv/i3lock-fancy-rapid /opt/
+		cp mv/lock.sh /opt/
+		cp mv/onedark.rasi /usr/share/rofi/themes/
+		cp -r mv/zsh-sudo /usr/share/zsh/plugins/
 
-cp -r mv/Hack-Nerd-Font /usr/share/fonts/
-chown $1:$1 /usr/share/fonts/Hack-Nerd-Font
+		#root
+		cp -r mv/root_home/.[cz]* /root/
 
-cp mv/org.freedesktop.Notifications.service /usr/share/dbus-1/services/
-cp mv/i3lock-fancy-rapid /opt/
-cp mv/onedark.rasi /usr/share/rofi/themes/
-cp -r mv/zsh-sudo /usr/share/zsh/plugins/
+		usermod --shell /bin/zsh root
 
-#root
-cp -r mv/root_home/.[cz]* /root/
+		#$USER
+		cp -r .[cz]* /home/$1/
+		chown -R $1:$1 /home/$1/.[cz]*
 
-usermod --shell /bin/zsh root
+		usermod --shell /bin/zsh $1
 
-#$USER
-cp -r .[cz]* /home/$1/
-chown -R $1:$1 /home/$1/.[cz]*
+		sudo localectl set-x11-keymap latam
 
-usermod --shell /bin/zsh $1
+		reboot
+	fi
+else
+	echo "./install.sh [non-privileged user]"	
+
+fi
 
 
-reboot

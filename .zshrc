@@ -32,7 +32,7 @@ function theme(){
                         sed -i "s/${actual}/${1}/g" ~/.config/qtile/autostart.sh    			
 			sed -i "s/${actual}/${1}/g" ~/.config/qtile/config.json
     			feh --bg-fill ~/.config/qtile/themes/$1.png
-    			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con: win+ctrl+r"
+    			echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con ${yellowColour}win+ctrl+r${endColour} o cerrar sesión con ${yellowColour}win+ctrl+q${endColour}."
   		else
 			echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"			
 		fi

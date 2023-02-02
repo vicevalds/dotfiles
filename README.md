@@ -119,6 +119,8 @@ A considerar:
 5. Se debe instalar fzf desde su repositorio asi como la powerlevel10k.
 6. Se debe copiar la configuracion de la powerlevel10k en reemplazo de la generada
 tras la instalacion y personalización. 
+7. Se debe ajustar nuevamante la distribución del teclado usando ```sudo localectl 
+set-x11-keymap latam```
 
 ## Instalacion manual
 
