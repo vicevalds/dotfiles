@@ -75,7 +75,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "b", lazy.spawn("librewolf")),
 
     # Block
-    ([mod, "control"], "b", lazy.spawn("/opt/./locl.sh")),
+    ([mod, "control"], "b", lazy.spawn("/opt/./lock.sh")),
 
     # File Explorer
     ([mod], "e", lazy.spawn("ranger")),
