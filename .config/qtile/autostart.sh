@@ -16,4 +16,4 @@ nm-applet &
 udiskie -t &
 
 # Wallpaper
-feh --bg-tile ~/.config/qtile/themes/end.png & 
+feh --bg-fill ~/.config/qtile/themes/warning.png &
