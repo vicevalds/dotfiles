@@ -24,14 +24,6 @@ station show list
 station wlan0 connect <nombre red> <seguridad red>
 exit
 ```
-###### Error de la .iso
-
-```bash
-pacman -Syu
-pacman -Sy archlinux-keyring
-pacman -Sy openssl
-```
-
 ###### Cargador de arranque
 
 ```bash
@@ -261,3 +253,16 @@ paru -S libreoffice-bin
 paru -S librewolf-bin
 sudo pacman -S scrub
 ```
+
+# Debian based
+
+1. lsd proviene de snap
+2. bat se descarga como bat usando apt pero se nomina como batcat en /bin, por lo que se debe
+editar los alias en la .zshrc
+3. Para actualizar el sistema usar **sudo apt-get update**.
+4. Eliminar el widget que indica las actualizaciones de arch. 
+5. Instalar python3-pip
+6. Indicar como terminal kitty como default en las keys de qtile
+7. Reposicionar los plugins de la zsh en **/usr/share/zsh/plugins**
+8. Crear qtile.desktop en **/usr/share/xsessions/** con su respectivo contenido
+9. Instalar [picom](https://github.com/yshui/picom) desde su repositorio 
