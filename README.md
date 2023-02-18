@@ -265,4 +265,9 @@ editar los alias en la .zshrc
 6. Indicar como terminal kitty como default en las keys de qtile
 7. Reposicionar los plugins de la zsh en **/usr/share/zsh/plugins**
 8. Crear qtile.desktop en **/usr/share/xsessions/** con su respectivo contenido
-9. Instalar [picom](https://github.com/yshui/picom) desde su repositorio 
+9. Instalar [picom](https://github.com/yshui/picom) desde su repositorio
+10. El gestor de archivos de gnome es nautilus
+11. Para ajustar el brillo con brightnessctl el usuario no privilegiado debe pertenecer al grupo video
+12. Para las notificaciones, el servicio de notification-daemon se encuentra en /usr/lib/notification-daemon/notification-daemon
+en lugar de /usr/bin/notifification-daemon-1.0/notification-daemon, como se indica en org.freedesktop.Notifications.service,
+por ende se debe editar la direccion.

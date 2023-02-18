@@ -77,11 +77,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     # Block
     ([mod, "control"], "b", lazy.spawn("/opt/./lock.sh")),
 
-    # File Explorer
-    ([mod], "e", lazy.spawn("ranger")),
-
     # File explorer - Interfaz gráfica
-    ([mod, "shift"], "e", lazy.spawn("thunar")), 
+    ([mod], "e", lazy.spawn("thunar")), 
 
     # Terminal - kitty
     ([mod], "Return", lazy.spawn(terminal)),
@@ -112,6 +109,6 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
 
     # Brightness
-    ([mod], "F3", lazy.spawn("brightnessctl set +10%")),
-    ([mod], "F2", lazy.spawn("brightnessctl set 10%-")),
+    ([mod], "F3", lazy.spawn("brightnessctl set +5%")),
+    ([mod], "F2", lazy.spawn("brightnessctl set 5%-")),
 ]]
