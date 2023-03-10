@@ -60,8 +60,9 @@ primary_widgets = [
 
     powerline('color4', 'dark'),
 
-    icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
-    
+    #icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
+    icon(bg="color4", fg="text", text=' '), # nf-linux-ubuntu
+
     widget.CheckUpdates(
         background=colors['color4'],
         colour_have_updates=colors['text'],

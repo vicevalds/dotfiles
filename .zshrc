@@ -18,6 +18,7 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
+
 # Requiere scrub y shred, funcion para eliminar por completo un fichero
 function rmk(){
 	scrub -p dod $1
@@ -25,26 +26,26 @@ function rmk(){
 }
 
 
-function theme(){
-	if [ $# -eq 1 ]; then
-		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
-			  actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}') #theme
-        sed -i "s/${actual}/${1}/g" ~/.config/qtile/autostart.sh    			
-			  sed -i "s/${actual}/${1}/g" ~/.config/qtile/config.json
-    	  feh --bg-fill ~/.config/qtile/themes/$1.png
-    	  sed -i "s/${actual}/${1}/g" ~/.config/kitty/kitty.conf	
-        echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con ${yellowColour}win+ctrl+r${endColour} o cerrar sesión con ${yellowColour}win+ctrl+q${endColour}."
-  	else
-		  echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"			
-    fi
-  elif [ $# -eq 0 ]; then
-  	echo -e "\t${greenColour}[.]${endColour} Temas disponibles:"
-  	echo -e "$(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1)"
-	else
-   		echo -e "\t${redColour}[!]${endColour} Numero de argumentos invalido
-			\n\tEjemplo: theme [THEME]"
-  fi	
-}
+#function theme(){
+#	if [ $# -eq 1 ]; then
+#		if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
+#			  actual=$(sed -e "s/}//g" -e 's/"//g' .config/qtile/config.json | awk 'NF{print $NF}') #theme
+#        sed -i "s/${actual}/${1}/g" ~/.config/qtile/autostart.sh    			
+#			  sed -i "s/${actual}/${1}/g" ~/.config/qtile/config.json
+#    	  feh --bg-fill ~/.config/qtile/themes/$1.png
+#    	  sed -i "s/${actual}/${1}/g" ~/.config/kitty/kitty.conf	
+#        echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con ${yellowColour}win+ctrl+r${endColour} o cerrar sesión con ${yellowColour}win+ctrl+q${endColour}."
+#  	else
+#		  echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"			
+#    fi
+#  elif [ $# -eq 0 ]; then
+#  	echo -e "\t${greenColour}[.]${endColour} Temas disponibles:"
+#  	echo -e "$(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1)"
+#	else
+#   		echo -e "\t${redColour}[!]${endColour} Numero de argumentos invalido
+#			\n\tEjemplo: theme [THEME]"
+#  fi	
+#}
 
 
 # alias

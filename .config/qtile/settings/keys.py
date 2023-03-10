@@ -78,7 +78,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "control"], "b", lazy.spawn("/opt/./lock.sh")),
 
     # File explorer - Interfaz gráfica
-    ([mod], "e", lazy.spawn("thunar")), 
+    ([mod], "e", lazy.spawn("nautilus")), 
 
     # Terminal - kitty
     ([mod], "Return", lazy.spawn(terminal)),
@@ -88,8 +88,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "s", lazy.spawn("scrot -q 100 /home/vice/Images/Screenshots/'%Y-%m-%d_$wx$h.png'")),
-    ([mod, "shift"], "s", lazy.spawn("scrot -s -f /home/vice/Images/Screenshots/'%Y-%m-%d_$wx$h.png'")),
+    ([mod], "s", lazy.spawn("scrot -q 100 /home/vice/Pictures/Screenshots/'%Y-%m-%d_$wx$h.png'")),
+    ([mod, "shift"], "s", lazy.spawn("scrot -s -f /home/vice/Pictures/Screenshots/'%Y-%m-%d_$wx$h.png'")),
 
     # ------------ Hardware Configs ------------
 
