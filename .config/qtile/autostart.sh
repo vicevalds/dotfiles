@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#compositor de imagenes
+# compositor de imagenes
 picom &
 
 # systray battery icon
@@ -12,8 +12,11 @@ volumeicon &
 # net
 nm-applet &
 
-#auto mount usb
+# auto mount usb
 udiskie -t &
 
 # Wallpaper
 feh --bg-fill ~/.config/qtile/themes/warning.png &
+
+# latam keymap
+setxkbmap latam
