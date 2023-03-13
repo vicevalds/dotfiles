@@ -124,7 +124,7 @@ y fuentes.
 ### Software
 
 ```bash
-sudo pacman -S pacman-contrib kitty rofi redshift picom feh zsh bat mdcat lsd locate cbatticon pulseaudio 
+sudo pacman -S pacman-contrib kitty rofi redshift picom feh zsh bat lsd locate cbatticon pulseaudio 
 pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick 
 nautilus neofetch vlc scrot i3lock wget p7zip python-pip lxappearance
 ```

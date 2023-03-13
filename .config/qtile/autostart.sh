@@ -16,7 +16,7 @@ nm-applet &
 udiskie -t &
 
 # Wallpaper
-feh --bg-fill ~/.config/qtile/themes/warning.png &
+feh --no-fehbg --bg-fill ~/.config/qtile/themes/warning.png &
 
 # latam keymap
 setxkbmap latam

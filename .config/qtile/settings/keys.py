@@ -91,8 +91,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "s", lazy.spawn("scrot -q 100 /home/vice/Pictures/Screenshots/'%Y-%m-%d_$wx$h.png'")),
     ([mod, "shift"], "s", lazy.spawn("scrot -s -f /home/vice/Pictures/Screenshots/'%Y-%m-%d_$wx$h.png'")),
     
-    # jupyter notebook (from anaconda3)
-    ([mod], "j", lazy.spawn("jupyter notebook")), 
+    # pavucontrol
+    ([mod], "p", lazy.spawn("pavucontrol")), 
 
     # ------------ Hardware Configs ------------
 

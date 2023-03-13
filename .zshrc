@@ -18,6 +18,8 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
+# PATH qtile para Ubuntu
+#PATH=$PATH:/home/vice/.local/bin
 
 # Requiere scrub y shred, funcion para eliminar por completo un fichero
 function rmk(){
