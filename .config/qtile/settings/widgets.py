@@ -52,14 +52,14 @@ def workspaces():
             other_screen_border=colors['dark'],
             disable_drag=True
         ),
-        widget.WindowName(**base(fg='text'), fontsize=14, padding=5, max_chars=40),
+        widget.Spacer(**base(bg='dark'))
+        #widget.WindowName(**base(fg='text'), fontsize=14, padding=5, max_chars=40),
 ]
 
 primary_widgets = [
     *workspaces(),
 
     powerline('color4', 'dark'),
-    #powerline('color3', 'dark'),
 
     #icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
     icon(bg="color4", fg="text", text='   '), #nf-linux-kali_linux

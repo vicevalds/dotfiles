@@ -88,7 +88,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "s", lazy.spawn("flameshot gui")),
+    ([mod], "f", lazy.spawn("flameshot gui")),
     # pavucontrol
     ([mod], "p", lazy.spawn("pavucontrol")),
 

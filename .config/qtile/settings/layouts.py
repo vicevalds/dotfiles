@@ -10,10 +10,10 @@ from .theme import colors
 
 
 layout_conf = {
-    'border_focus': colors['urgent'][0],
+    'border_focus': colors['inactive'],
     'border_width': 3,
     'margin': 4,
-    'grow_amount': 2
+    'grow_amount': 1
 }
 
 layouts = [
@@ -41,5 +41,5 @@ floating_layout = layout.Floating(
         Match(title='branchdialog'),
         Match(title='pinentry'),
     ],
-    border_focus=colors["urgent"][0]
+    border_focus=colors["inactive"]
 )

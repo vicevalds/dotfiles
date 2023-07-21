@@ -18,6 +18,8 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
+export PATH=$PATH:/usr/local/go/bin:/home/vicente/.local/bin:/home/vice/composer.phar
+
 # scrub y shred, para eliminar por completo un fichero
 function rmk(){
 	scrub -p dod $1
@@ -26,8 +28,8 @@ function rmk(){
 
 #upgrade system
 function upsystem(){
-        sudo apt update && sudo apt -y upgrade && sudo apt clean && sudo apt autoclean;
-        sudo apt -y autoremove;
+        sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove && sudo apt autoclean;
+        sudo apt -y clean;
         sudo dpkg --configure -a
 }
 
@@ -37,26 +39,33 @@ function uninstall(){
                 sudo apt -y autoremove;
                 sudo dpkg --configure -a
         else
-                echo -e "\n\t${redColour}[!] Use: uninstall <pkg>${endColour}\n"
+                echo -e "\n\t${redColour}[!] Use: uninstall [pkg]${endColour}\n"
         fi
+}
+
+function mkt(){
+	mkdir {recon,content,exploits}
 }
 
 function theme(){
     if [ $# -eq 1 ]; then
         if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
                 actual=$(sed -e "s/}//g" -e 's/"//g' ~/.config/qtile/config.json | awk 'NF{print $NF}') #theme
+                wallpaper=$(ls ~/.config/qtile/wallpapers | grep $1)
                 sed -i "s/${actual}/${1}/g" ~/.config/qtile/autostart.sh
                 sed -i "s/${actual}/${1}/g" ~/.config/qtile/config.json
-                feh --no-fehbg --bg-fill ~/.config/qtile/wallpapers/$1.png
-		echo -e "\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con ${yellowColour}win+ctrl+r${endColour} o cerrar sesión con ${yellowColour}win+ctrl+q${endColour}."
+                feh --no-fehbg --bg-fill ~/.config/qtile/wallpapers/${wallpaper}
+		echo -e "\n\t${yellowColour}[!]${endColour} Recuerda reiniciar qtile con ${yellowColour}win+ctrl+r${endColour} o cerrar sesión con ${yellowColour}win+ctrl+q${endColour}.\n"
         else
-                echo -e "\t${redColour}[!]${endColour} El tema indicado no existe"
+                echo -e "\n\t${redColour}[!]${endColour} Uso: theme [THEME]\n"
         fi
     elif [ $# -eq 0 ]; then
                 echo -e "\t${greenColour}[.]${endColour} Temas disponibles:"
-                echo -e "$(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1)"
+		for theme in $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1); do
+			echo -e "\t\t${theme}"
+		done; echo -e " "
     else
-                echo -e "\t${redColour}[!]${endColour} Numero de argumentos invalido\n\tEjemplo: theme [THEME]"
+                echo -e "\n\t${redColour}[!]${endColour} Uso: theme [THEME]\n"
     fi
 }
 

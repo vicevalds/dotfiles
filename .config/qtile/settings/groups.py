@@ -18,10 +18,18 @@ from .keys import mod, keys
 
 # 
 # for dev
-groups = [Group(i) for i in [
-    "", "", "", "", "", "", "", 
+#groups = [Group(i) for i in [
+#    " ", " ", " ", " ", " ", " ", " ",
+#]]
 
+#groups = [Group(i) for i in [
+#    "  ", "  ", "  ", "  ", "  ",
+#]]
+
+groups = [Group(i) for i in [
+    "1", "2", "3", "4", "5",
 ]]
+
 
 for i, group in enumerate(groups):
     actual_key = str(i + 1)

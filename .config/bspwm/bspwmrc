@@ -23,7 +23,7 @@ bspc rule -a Screenkey manage=off
 picom &
 
 # Wallpaper
-feh --no-fehbg --bg-fill ~/.config/wallpapers/kali.png &
+feh --no-fehbg --bg-fill ~/.config/wallpapers/kali-nova.png &
 
 # Polybar
 ~/.config/polybar/./launch.sh &

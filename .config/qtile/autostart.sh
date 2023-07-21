@@ -16,7 +16,7 @@ nm-applet &
 udiskie -t &
 
 # Wallpaper
-feh --no-fehbg --bg-fill ~/.config/qtile/wallpapers/kali.png &
+feh --no-fehbg --bg-fill ~/.config/qtile/wallpapers/kali-nova.png &
 
 # latam keymap
 setxkbmap latam
