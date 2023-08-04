@@ -88,7 +88,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "f", lazy.spawn("flameshot gui")),
+    ([], "Print", lazy.spawn("flameshot gui")),
     # pavucontrol
     ([mod], "p", lazy.spawn("pavucontrol")),
 
@@ -96,10 +96,10 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # Volume
     ([], "XF86AudioLowerVolume", lazy.spawn(
-        "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+        "pactl set-sink-volume @DEFAULT_SINK@ -2%"
     )),
     ([], "XF86AudioRaiseVolume", lazy.spawn(
-        "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+        "pactl set-sink-volume @DEFAULT_SINK@ +2%"
     )),
     ([], "XF86AudioMute", lazy.spawn(
         "pactl set-sink-mute @DEFAULT_SINK@ toggle"

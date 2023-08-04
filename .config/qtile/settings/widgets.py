@@ -34,7 +34,7 @@ def workspaces():
         widget.GroupBox(
             **base(fg='text'),
             font='Hack Nerd Font',
-            fontsize=19,
+            fontsize=18,
             margin_y=3,
             margin_x=0,
             padding_y=8,
@@ -60,6 +60,7 @@ primary_widgets = [
     *workspaces(),
 
     powerline('color4', 'dark'),
+    #powerline('color3', 'dark'),
 
     #icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
     icon(bg="color4", fg="text", text='   '), #nf-linux-kali_linux
