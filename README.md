@@ -20,8 +20,14 @@
 | [Bspwm](https://github.com/baskerville/bspwm)              | Tiling window manager      | 
 | Sxhkd                |  |
 
+**Arch based**
 ```bash
-sudo pacman -S kitty rofi redshift feh zsh bat locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick nautilus neofetch vlc flameshot i3lock p7zip python-pip python3-venv lxappearance libnotify notification-daemon libxcb-util0-dev libxcb-image0-dev build-essential net-tools
+sudo pacman -S kitty rofi redshift feh zsh bat locate cbatticon pulseaudio pavucontrol volumeicon brightnessctl playerctl udiskie ntfs-3g network-manager-applet imagemagick thunar neofetch vlc flameshot i3lock p7zip python-pip python3-venv lxappearance libnotify notification-daemon libxcb-util0-dev libxcb-image0-dev build-essential xclip net-tools cmake
+```
+
+**Debian based**
+```bash
+sudo apt install kitty rofi redshift feh zsh bat locate cbatticon pavucontrol brightnessctl playerctl udiskie ntfs-3g imagemagick thunar neofetch vlc flameshot i3lock p7zip lxappearance xclip build-essential cmake
 ```
 
 <details>
@@ -83,16 +89,16 @@ makepkg -si
 ```bash
 pip install git+https://github.com/qtile/qtile
 ```
-3. After installation, copy the `qtile.desktop` file to `/usr/share/xsessions` and run:
+3. After installation run:
 ```bash
 sudo localectl set-x11-keymap latam to configure the latam keyboard layout.
 ```
 4. Install `pacman-contrib` to see Arch's pending updates in a qtile widget.
 5. Before using Fzf you must synchronize the system files with `updatedb` from the *locate* package.
-6. After installing `lightdm` and `lightdm-webkit2-greeter`, run `systemctl enable lightdm.service` and copy the `lightdm-webkit2-greeter.conf` and `lightdm.conf` files to `/etc/lightdm`.
+6. After installing `lightdm` and `lightdm-webkit2-greeter`, run `systemctl enable lightdm.service` and edit the `lightdm-webkit2-greeter.conf` and `lightdm.conf` files in `/etc/lightdm`.
 7. For the Rofi theme copy `onedark.rasi` into `/usr/share/rofi/themes/`.
-8. Copy [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads), [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme), and [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme) into  `/usr/share/{fonts,icons,themes}`.
-9. For notifications copy `org.freedesktop.Notifications.service` into `/usr/share/dbus-1/services`.
+8. Copy [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads), [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme), and [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme) into `/usr/share/{fonts,icons,themes}`.
+9. For notifications in arch, copy `org.freedesktop.Notifications.service` into `/usr/share/dbus-1/services`.
 10. For screen locking with [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid) copy `lock.sh` into `/opt`.
 11. Copy [sudo-plugin](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) into `/usr/share`. To use, esc-esc or alt-esc.
 
