@@ -10,21 +10,6 @@ from .keys import mod, keys
 
 
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
-# Icons:
-# nf-fa-firefox
-# nf-cod-terminal_bash
-# nf-dev-vim
-# nf-dev-git
-
-# 
-# for dev
-#groups = [Group(i) for i in [
-#    " ", " ", " ", " ", " ", " ", " ",
-#]]
-
-#groups = [Group(i) for i in [
-#    "  ", "  ", "  ", "  ", "  ",
-#]]
 
 groups = [Group(i) for i in [
     "1", "2", "3", "4", "5",

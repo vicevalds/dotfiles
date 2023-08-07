@@ -18,8 +18,6 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
-export PATH=$PATH:/usr/local/go/bin:/home/vicente/.local/bin:/home/vice/composer.phar
-
 # scrub y shred, para eliminar por completo un fichero
 function rmk(){
 	scrub -p dod $1
@@ -68,25 +66,6 @@ function theme(){
                 echo -e "\n\t${redColour}[!]${endColour} Uso: theme [THEME]\n"
     fi
 }
-
-function wall(){
-    if [ $# -eq 1 ]; then
-        if [ $(ls ~/.config/qtile/wallpapers | grep $1) ]; then
-		wallpaper=$(ls ~/.config/qtile/wallpapers | grep $1)
-		feh --no-fehbg --bg-fill ~/.config/qtile/wallpapers/${wallpaper}
-        else
-                echo -e "\n\t${redColour}[!]${endColour} Usage: wall [WALLPAPER]\n"
-        fi
-    elif [ $# -eq 0 ]; then
-                echo -e "\t${greenColour}[.]${endColour} Wallpapers:"
-		for wall in $(ls ~/.config/qtile/wallpapers | cut -d "." -f 1); do
-			echo -e "\t\t${wall}"
-		done; echo -e " "
-    else
-                echo -e "\n\t${redColour}[!]${endColour} Usage: wall [WALLPAPER]\n"
-    fi
-}
-
 
 # alias
 alias dir='dir --color=auto'

@@ -10,7 +10,6 @@ def base(fg='text', bg='dark'):
         'background': colors[bg]
     }
 
-
 def icon(fg='text', bg='dark', fontsize=16, text="?"):
     return widget.TextBox(
         **base(fg, bg),
@@ -18,16 +17,6 @@ def icon(fg='text', bg='dark', fontsize=16, text="?"):
         text=text,
         padding=3
     )
-
-
-def powerline(fg="text", bg="dark"):
-    return widget.TextBox(
-        **base(fg, bg),
-        text="", # Icon: nf-oct-triangle_left
-        fontsize=37,
-        padding=-4
-    )
-
 
 def workspaces():
     return [
@@ -59,12 +48,9 @@ def workspaces():
 primary_widgets = [
     *workspaces(),
 
-    powerline('color4', 'dark'),
-    #powerline('color3', 'dark'),
+    #icon(bg="color3", fg="text", text='   '), #nf-linux-kali_linux
 
     #icon(bg="color4", fg="text", text=' '), # Icon: nf-fa-download
-    icon(bg="color4", fg="text", text='   '), #nf-linux-kali_linux
-
     #widget.CheckUpdates(
     #    distro='Arch',
     #    background=colors['color4'],
@@ -76,20 +62,10 @@ primary_widgets = [
     #     custom_command='checkupdates',
     #),
 
-    powerline('color3', 'color4'),
-
-    widget.CurrentLayoutIcon(**base(bg='color3'), scale=0.65),
-
-    widget.CurrentLayout(**base(bg='color3', fg='text'), padding=5),
-
-    powerline('color2', 'color3'),
-
-    # Icon: nf-mdi-calendar_clock
-    icon(bg='color2', fg='text', fontsize=17, text=' '),
+    # Icon: nf-fa-calendar
+    icon(bg='color2', fg='text', fontsize=17, text='  '),
 
     widget.Clock(**base(bg='color2'), format='%d/%m/%Y - %a - %H:%M '),
-
-    powerline('color1', 'color2'),
 
     widget.Systray(background=colors['color1'], padding=5),
 
@@ -98,17 +74,11 @@ primary_widgets = [
 secondary_widgets = [
     *workspaces(),
 
-    powerline('color2', 'dark'),
-
     widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
 
     widget.CurrentLayout(**base(bg='color2'), padding=5),
 
-    powerline('color1', 'color2'),
-
     widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %a - %H:%M '),
-
-    powerline('dark', 'color1'),
 ]
 
 widget_defaults = {

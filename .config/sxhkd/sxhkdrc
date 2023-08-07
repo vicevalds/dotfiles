@@ -23,7 +23,7 @@ super + ctrl + b
 
 # File explorer - GUI
 super + e
-	nautilus 
+	thunar 
 
 # Redshift
 super + r 

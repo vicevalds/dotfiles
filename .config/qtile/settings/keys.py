@@ -9,8 +9,7 @@ from libqtile.command import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-#terminal = guess_terminal()
-terminal = "kitty"
+terminal = guess_terminal()
 
 keys = [Key(key[0], key[1], *key[2:]) for key in [
     # ------------ Window Configs ------------

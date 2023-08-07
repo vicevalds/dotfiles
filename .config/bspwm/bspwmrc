@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -26,7 +26,7 @@ picom &
 feh --no-fehbg --bg-fill ~/.config/wallpapers/kali-nova.png &
 
 # Polybar
-~/.config/polybar/./launch.sh &
+# ~/.config/polybar/./launch.sh &
 
 # Border windows
 bspc config border_width 0.5
