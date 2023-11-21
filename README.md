@@ -17,8 +17,6 @@
 | Flameshot            | Screenshots                |
 | [i3lock](https://github.com/yvbbrjdr/i3lock-fancy-rapid)             | Screensaver                |
 | [BlackArch](https://www.blackarch.org/downloads.html)      | The unofficial user repository |
-| [Bspwm](https://github.com/baskerville/bspwm)              | Tiling window manager      | 
-| Sxhkd                |  |
 
 **Arch based**
 ```bash
@@ -101,6 +99,13 @@ sudo localectl set-x11-keymap latam to configure the latam keyboard layout.
 9. For notifications in arch, copy `org.freedesktop.Notifications.service` into `/usr/share/dbus-1/services`.
 10. For screen locking with [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid) copy `lock.sh` into `/opt`.
 11. Copy [sudo-plugin](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) into `/usr/share`. To use, esc-esc or alt-esc.
+
+### To set the trackpad use:
+```bash
+sudo apt install xserver-xorg-input-synaptics
+reboot
+synclient tapbutton1=1
+```
 
 <details>
 <summary>Fzf shortcuts</summary> 

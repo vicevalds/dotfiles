@@ -41,10 +41,6 @@ function uninstall(){
         fi
 }
 
-function mkt(){
-	mkdir {nmap,content,exploits}
-}
-
 function theme(){
     if [ $# -eq 1 ]; then
         if [ $(ls ~/.config/qtile/themes | grep ".json" | cut -d "." -f 1 | grep -w $1) ]; then
@@ -94,7 +90,7 @@ zstyle ':autocomplete:*' min-input 2
 # Requires "zsh-syntax-highlighting"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-sudo/sudo.plugin.zsh
+source /usr/share/sudo.plugin.zsh
 
 # Save type history for completion and easier life
 HISTFILE=~/.zsh_history
@@ -103,8 +99,8 @@ SAVEHIST=1000
 setopt histignorealldups sharehistory
 
 # Custom Aliases
-alias cat='batcat'
-alias catnp='batcat --no-paging'
+alias cat='bat'
+alias catnp='bat --no-paging'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
