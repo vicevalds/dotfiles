@@ -87,9 +87,9 @@ makepkg -si
 ```bash
 pip install git+https://github.com/qtile/qtile
 ```
-3. After installation run:
+3. After installation run to configure the latam keyboard layout.
 ```bash
-sudo localectl set-x11-keymap latam to configure the latam keyboard layout.
+sudo localectl set-x11-keymap latam
 ```
 4. Install `pacman-contrib` to see Arch's pending updates in a qtile widget.
 5. Before using Fzf you must synchronize the system files with `updatedb` from the *locate* package.
