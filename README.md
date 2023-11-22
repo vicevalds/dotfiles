@@ -83,22 +83,18 @@ makepkg -si
 
 ## Some considerations
 
-1. The qtile developers recommend install qtile using 
-```bash
-pip install git+https://github.com/qtile/qtile
-```
-3. After installation run to configure the latam keyboard layout.
+1. After installing qtile run to configure the latam keyboard layout.
 ```bash
 sudo localectl set-x11-keymap latam
 ```
-4. Install `pacman-contrib` to see Arch's pending updates in a qtile widget.
-5. Before using Fzf you must synchronize the system files with `updatedb` from the *locate* package.
-6. After installing `lightdm` and `lightdm-webkit2-greeter`, run `systemctl enable lightdm.service` and edit the `lightdm-webkit2-greeter.conf` and `lightdm.conf` files in `/etc/lightdm`.
-7. For the Rofi theme copy `onedark.rasi` into `/usr/share/rofi/themes/`.
-8. Copy [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads), [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme), and [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme) into `/usr/share/{fonts,icons,themes}`.
-9. For notifications in arch, copy `org.freedesktop.Notifications.service` into `/usr/share/dbus-1/services`.
-10. For screen locking with [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid) copy `lock.sh` into `/opt`.
-11. Copy [sudo-plugin](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) into `/usr/share`. To use, esc-esc or alt-esc.
+2. Install `pacman-contrib` to see Arch's pending updates in a qtile widget.
+3. Before using Fzf you must synchronize the system files with `updatedb` from the *locate* package.
+4. After installing `lightdm` and `lightdm-webkit2-greeter`, run `systemctl enable lightdm.service` and edit the `lightdm-webkit2-greeter.conf` and `lightdm.conf` files in `/etc/lightdm`.
+5. For the Rofi theme copy `onedark.rasi` into `/usr/share/rofi/themes/`.
+6. Copy [Hack-Nerd-Font](https://www.nerdfonts.com/font-downloads), [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme), and [Lavanda-Dark](https://github.com/vinceliuice/Lavanda-gtk-theme) into `/usr/share/{fonts,icons,themes}`.
+7. For notifications in arch, copy `org.freedesktop.Notifications.service` into `/usr/share/dbus-1/services`.
+8. For screen locking with [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid) copy `lock.sh` into `/opt`.
+9. Copy [sudo-plugin](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) into `/usr/share`. To use, esc-esc or alt-esc.
 
 ### To set the trackpad use:
 ```bash
