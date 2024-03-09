@@ -26,19 +26,7 @@ function rmk(){
 
 #upgrade system
 function upsystem(){
-        sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove && sudo apt autoclean;
-        sudo apt -y clean;
-        sudo dpkg --configure -a
-}
-
-function uninstall(){
-        if [ $# -eq 1 ]; then
-                sudo apt -y purge $1 && sudo apt clean && sudo apt autoclean;
-                sudo apt -y autoremove;
-                sudo dpkg --configure -a
-        else
-                echo -e "\n\t${redColour}[!] Use: uninstall [pkg]${endColour}\n"
-        fi
+        sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
 }
 
 function theme(){
