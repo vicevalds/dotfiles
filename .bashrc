@@ -97,6 +97,7 @@ alias cat='batcat -P'
 alias xc='xclip -sel clip'
 alias xp='xclip -sel clip -o'
 alias npm=pnpm
+alias upd='sudo apt update; sudo apt upgrade -y; sudo apt autoremove -y'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
