@@ -20,6 +20,7 @@ sudo ln -sf /sbin/reboot /usr/bin/reboot
 # Custom menu and backgrounds
 sudo cp onedark.rasi /usr/share/rofi/themes/.
 sudo cp img/* /usr/share/images/desktop-base/.
+bash wallpapers.sh
 # Install dotfiles
 cp -r .config/rofi .config/xfce4/ ~/.config/.
 cp .bashrc ~/.
