@@ -19,10 +19,10 @@ sudo ln -sf /sbin/shutdown /usr/bin/shutdown
 sudo ln -sf /sbin/reboot /usr/bin/reboot
 # Custom menu and backgrounds
 sudo cp onedark.rasi /usr/share/rofi/themes/.
-sudo cp img/* /usr/share/images/desktop-base/.
 bash wallpapers.sh
+sudo cp img/* /usr/share/images/desktop-base/.
 # Install dotfiles
-cp -r .config/rofi .config/xfce4/ ~/.config/.
+cp -r .config/rofi .config/xfce4/ .config/autostart/ ~/.config/.
 cp .bashrc ~/.
 # Set xfce4 enviroment
 xfce4-panel-profiles load xfce4-custom.tar.bz2
@@ -30,8 +30,6 @@ xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep "work
 # Custom lightdm
 bash lightdm.sh
 
-echo "[!] Add it to AutoStart to use the trackpad:"
-echo "        synclient tapbutton1=1"
 read -p "Reboot the system? [Y/n]: " response
 if [[ "$response" == "Y" || "$response" == "y" ]]; then
   reboot

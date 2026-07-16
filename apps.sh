@@ -9,4 +9,4 @@ curl -fsS https://dl.brave.com/install.sh | sh
 
 wget -qO- https://get.pnpm.io/install.sh | sh -
 # . ~/.bashrc
-# pnpm env use --global lts
+# pnpm runtime set node lts -g

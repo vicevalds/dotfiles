@@ -1,4 +1,4 @@
-cd /usr/share/images/desktop-base/
+cd img/
 curl -O https://www.ghibli.jp/gallery/nausicaa002.jpg
 curl -O https://www.ghibli.jp/gallery/nausicaa004.jpg
 curl -O https://www.ghibli.jp/gallery/nausicaa020.jpg
