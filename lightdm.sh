@@ -20,4 +20,4 @@ sudo mv lightdm-web-greeter-theme-simple /usr/share/web-greeter/themes/.
 sudo sed -e 's|gruvbox|lightdm-web-greeter-theme-simple|g' /etc/lightdm/web-greeter.yml -i.old
 sudo sed -e 's|greeter-session=.*|greeter-session=nody-greeter|g' /etc/lightdm/lightdm.conf -i.old
 # Set theme for lightdm-web-greeter-theme-simple
-sudo sed -e "s|''|'ghost_in_the_shell.gif'|g" /usr/share/web-greeter/themes/lightdm-web-greeter-theme-simple/background.js -i.old
+#sudo sed -e "s|''|'ghost_in_the_shell.gif'|g" /usr/share/web-greeter/themes/lightdm-web-greeter-theme-simple/background.js -i.old
