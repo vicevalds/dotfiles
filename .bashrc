@@ -94,6 +94,7 @@ alias lla='ls -lahrt'
 alias la='ls -A'
 alias l='ls -CF'
 alias cat='batcat -P'
+alias ccat='/usr/bin/cat'
 alias xc='xclip -sel clip'
 alias xp='xclip -sel clip -o'
 alias npm=pnpm
